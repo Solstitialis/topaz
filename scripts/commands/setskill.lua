@@ -6,7 +6,7 @@ require("scripts/globals/status")
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "sis"
 }
 
@@ -53,6 +53,11 @@ function onTrigger(player, skillName, skillLV, target)
             player:PrintToPlayer(string.format("Player named '%s' not found!", target))
             return
         end
+    end
+
+    if (player:getGMLevel() <= targ:getGMLevel()) then
+        error(player, string.format("Insufficient permission to set skill to player named '%s'", target));
+        return;
     end
 
     targ:setSkillLevel(skillID, skillLV*10)

@@ -5,7 +5,7 @@
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = ""
 }
 
@@ -37,8 +37,8 @@ function onTrigger(player)
     else
         local gmlvl = player:getGMLevel()
         if (gmlvl >= MINLVL_GM_PRODUCER) then
-            player:setFlag(FLAG_GM_PRODUCER)
-        elseif (gmlvl >= MINLVL_GM_LEAD) then
+            player:setFlag(FLAG_GM_LEAD)
+        elseif (gmlvl >= MINLVL_GM_LEAD) then   --No need to display difference between GM Lvl 4 and 5
             player:setFlag(FLAG_GM_LEAD)
         elseif (gmlvl >= MINLVL_GM_SENIOR) then
             player:setFlag(FLAG_GM_SENIOR)
