@@ -6,7 +6,7 @@ require("scripts/globals/status")
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "iis"
 }
 
@@ -33,10 +33,14 @@ function onTrigger(player, slot, points, target)
     if target == nil then
         target = player
     else
+        local targ = target
         target = GetPlayerByName(target)
         if target == nil then
-            error(player, string.format("Player named '%s' not found!", target))
+            error(player, string.format("Player named '%s' not found!", targ))
             return
+        elseif (player:getGMLevel() <= target:getGMLevel()) then
+			error(player, string.format("Insufficient permission to add weapon skill points to player named '%s'", targ));
+            return;
         end
     end
 
