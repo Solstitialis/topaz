@@ -5,7 +5,7 @@
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "iiiiiiiiiii"
 }
 
@@ -31,6 +31,13 @@ function onTrigger(player, itemId, quantity, aug0, aug0val, aug1, aug1val, aug2,
     end
 
     -- Give the GM the item...
-    player:addItem( itemId, quantity, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val, trialId )
+    if (player:getGMLevel() >= 4) then
+        player:addItem( itemId, quantity, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val, trialId )
+        if (aug0 ~= nil) then
+            player:PrintToPlayer( "Augmented Add Item Command." );
+        end
+    else
+        player:addItem( itemId, quantity );
+    end
     player:messageSpecial( ID.text.ITEM_OBTAINED, itemId )
 end
