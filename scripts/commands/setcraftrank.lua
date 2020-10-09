@@ -6,7 +6,7 @@ require("scripts/globals/status")
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "sss"
 }
 
@@ -57,6 +57,11 @@ function onTrigger(player, craftName, tier, target)
             player:PrintToPlayer(string.format("Player named '%s' not found!", target))
             return
         end
+    end
+
+    if (player:getGMLevel() <= targ:getGMLevel()) then
+        error(player, string.format("Insufficient permission to set craft rank to player named '%s'", target));
+        return;
     end
 
     targ:setSkillRank(skillID, craftRank)

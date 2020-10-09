@@ -5,7 +5,7 @@
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "s"
 }
 
@@ -36,6 +36,9 @@ function onTrigger(player, target)
         if (targ == nil) then
             error(player, string.format("Player named '%s' not found!", target))
             return
+        elseif (player:getGMLevel() <= targ:getGMLevel()) then
+			error(player, string.format("Insufficient permission to add maps to player named '%s'", target));
+            return;
         end
     end
 
