@@ -5,7 +5,7 @@
 
 cmdprops =
 {
-    permission = 1,
+    permission = 4,
     parameters = "siiiiiiiiii"
 }
 
@@ -29,7 +29,12 @@ function onTrigger(player, target, itemId, amount, aug0, aug0val, aug1, aug1val,
         targ:messageSpecial( ID.text.ITEM_CANNOT_BE_OBTAINED, itemId )
         player:PrintToPlayer( string.format( "Player '%s' does not have free space for that item!", target ) )
     else
-        targ:addItem( itemId, amount, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val )
+        if (player:getGMLevel() >= 4) then
+            targ:addItem( itemId, amount, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val )
+            player:PrintToPlayer( "Augmented Give Item Command." );
+        else
+            targ:addItem( itemId, amount );
+        end
         targ:messageSpecial( ID.text.ITEM_OBTAINED, itemId )
         player:PrintToPlayer( string.format( "Gave player '%s' Item with ID of '%u' ", target, itemId ) )
     end
