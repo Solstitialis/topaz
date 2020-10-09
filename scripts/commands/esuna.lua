@@ -1,0 +1,75 @@
+---------------------------------------------------------------------------------------------------
+-- func: esuna
+-- desc: Removes common negative status effects
+---------------------------------------------------------------------------------------------------
+
+cmdprops =
+{
+    permission = 1,
+    parameters = ""
+};
+
+function onTrigger(player)
+    if (player:getHP() > 0) then
+        player:delStatusEffect(tpz.effect.ACCURACY_DOWN)
+        player:delStatusEffect(tpz.effect.ACCURACY_DOWN_II)
+        player:delStatusEffect(tpz.effect.ADDLE)
+        player:delStatusEffect(tpz.effect.AMNESIA)
+        player:delStatusEffect(tpz.effect.ATTACK_DOWN)
+        player:delStatusEffect(tpz.effect.ATTACK_DOWN_II)
+        player:delStatusEffect(tpz.effect.STR_DOWN)
+        player:delStatusEffect(tpz.effect.DEX_DOWN)
+        player:delStatusEffect(tpz.effect.VIT_DOWN)
+        player:delStatusEffect(tpz.effect.AGI_DOWN)
+        player:delStatusEffect(tpz.effect.INT_DOWN)
+        player:delStatusEffect(tpz.effect.MND_DOWN)
+        player:delStatusEffect(tpz.effect.CHR_DOWN)
+        player:delStatusEffect(tpz.effect.BIND)
+        player:delStatusEffect(tpz.effect.BIO)
+        player:delStatusEffect(tpz.effect.BLINDNESS)
+        player:delStatusEffect(tpz.effect.CHARM_I)
+        player:delStatusEffect(tpz.effect.CHARM_II)
+        player:delStatusEffect(tpz.effect.CURSE_I)
+        player:delStatusEffect(tpz.effect.CURSE_II)
+        player:delStatusEffect(tpz.effect.DEFENSE_DOWN)
+        player:delStatusEffect(tpz.effect.DEFENSE_DOWN_II)
+        player:delStatusEffect(tpz.effect.DIA)
+        player:delStatusEffect(tpz.effect.DISEASE)
+        player:delStatusEffect(tpz.effect.DOOM)
+        player:delStatusEffect(tpz.effect.BURN)
+        player:delStatusEffect(tpz.effect.FROST)
+        player:delStatusEffect(tpz.effect.CHOKE)
+        player:delStatusEffect(tpz.effect.RASP)
+        player:delStatusEffect(tpz.effect.SHOCK)
+        player:delStatusEffect(tpz.effect.DROWN)
+        player:delStatusEffect(tpz.effect.EVASION_DOWN)
+        player:delStatusEffect(tpz.effect.EVASION_DOWN_II)
+        player:delStatusEffect(tpz.effect.FLASH)
+        player:delStatusEffect(tpz.effect.MAGIC_ATK_DOWN)
+        player:delStatusEffect(tpz.effect.MAGIC_ATK_DOWN_II)
+        player:delStatusEffect(tpz.effect.MAGIC_ACC_DOWN)
+        player:delStatusEffect(tpz.effect.MAGIC_ACC_DOWN_II)
+        player:delStatusEffect(tpz.effect.MAGIC_DEF_DOWN)
+        player:delStatusEffect(tpz.effect.MAGIC_DEF_DOWN_II)
+        player:delStatusEffect(tpz.effect.MAX_HP_DOWN)
+        player:delStatusEffect(tpz.effect.MAX_MP_DOWN)
+        player:delStatusEffect(tpz.effect.MUDDLE)
+        player:delStatusEffect(tpz.effect.PARALYSIS)
+        player:delStatusEffect(tpz.effect.PARALYSIS_II)
+        player:delStatusEffect(tpz.effect.PETRIFICATION)
+        player:delStatusEffect(tpz.effect.GRADUAL_PETRIFICATION)
+        player:delStatusEffect(tpz.effect.POISON)
+        player:delStatusEffect(tpz.effect.POISON_II)
+        player:delStatusEffect(tpz.effect.PLAGUE)
+        player:delStatusEffect(tpz.effect.SILENCE)
+        player:delStatusEffect(tpz.effect.SLEEP_I)
+        player:delStatusEffect(tpz.effect.SLEEP_II)
+        player:delStatusEffect(tpz.effect.LULLABY)
+        player:delStatusEffect(tpz.effect.SLOW)
+        player:delStatusEffect(tpz.effect.SLOW_II)
+        player:delStatusEffect(tpz.effect.STUN)
+        player:delStatusEffect(tpz.effect.WEAKNESS)
+        player:delStatusEffect(tpz.effect.WEIGHT)
+        player:delStatusEffect(tpz.effect.WEIGHT_II)
+    end
+end
