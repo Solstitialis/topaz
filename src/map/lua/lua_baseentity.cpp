@@ -13755,6 +13755,40 @@ inline int32 CLuaBaseEntity::untargetable(lua_State* L)
 }
 
 /************************************************************************
+*  Function: getDelay()
+*  Purpose : Gets the default delay settings for a Mob
+*  Example : mob:getDelay()
+*  Notes   :
+************************************************************************/
+inline int32 CLuaBaseEntity::getDelay(lua_State* L)
+{
+    TPZ_DEBUG_BREAK_IF(m_PBaseEntity == nullptr);
+
+    CBattleEntity* PEntity = (CBattleEntity*)m_PBaseEntity;
+    int16 delay = PEntity->GetWeaponDelay(false);
+
+    lua_pushinteger(L, delay);
+    return 1;
+}
+
+/************************************************************************
+*  Function: getRDelay()
+*  Purpose : Gets the default ranged delay settings for a Mob
+*  Example : mob:getRDelay()
+*  Notes   :
+************************************************************************/
+inline int32 CLuaBaseEntity::getRDelay(lua_State* L)
+{
+    TPZ_DEBUG_BREAK_IF(m_PBaseEntity == nullptr);
+
+    CBattleEntity* PEntity = (CBattleEntity*)m_PBaseEntity;
+    int16 rDelay = PEntity->GetRangedWeaponDelay(false);
+
+    lua_pushinteger(L, rDelay);
+    return 1;
+}
+
+/************************************************************************
 *  Function: setDelay()
 *  Purpose : Override default delay settings for a Mob
 *  Example : mob:setDelay(2400)
@@ -15253,6 +15287,8 @@ Lunar<CLuaBaseEntity>::Register_t CLuaBaseEntity::methods[] =
     LUNAR_DECLARE_METHOD(CLuaBaseEntity,setUnkillable),
     LUNAR_DECLARE_METHOD(CLuaBaseEntity,untargetable),
 
+    LUNAR_DECLARE_METHOD(CLuaBaseEntity, getDelay),
+    LUNAR_DECLARE_METHOD(CLuaBaseEntity, getRDelay),
     LUNAR_DECLARE_METHOD(CLuaBaseEntity,setDelay),
     LUNAR_DECLARE_METHOD(CLuaBaseEntity,setDamage),
     LUNAR_DECLARE_METHOD(CLuaBaseEntity,hasSpellList),
