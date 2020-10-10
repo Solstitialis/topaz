@@ -31,7 +31,7 @@ ENABLE_VOIDWATCH = 1 -- Not an expansion, but has its own storyline.
 ENABLE_FIELD_MANUALS  = 1 -- Enables Fields of Valor
 ENABLE_GROUNDS_TOMES  = 1 -- Enables Grounds of Valor
 ENABLE_SURVIVAL_GUIDE = 1 -- Enables Survival Guides
-REGIME_WAIT = 1 -- Make people wait till 00:00 game time as in retail. If it's 0, there is no wait time.
+REGIME_WAIT = 0 -- Make people wait till 00:00 game time as in retail. If it's 0, there is no wait time.
 FOV_REWARD_ALLIANCE = 0 -- Allow Fields of Valor rewards while being a member of an alliance. (default retail behavior: 0)
 GOV_REWARD_ALLIANCE = 1 -- Allow Grounds of Valor rewards while being a member of an alliance. (default retail behavior: 1)
 
@@ -112,14 +112,14 @@ NM_LOTTERYCHANCE = 1.0
 NM_LOTTERYCOOLDOWN = 1.0
 
 -- DYNAMIS SETTINGS
-    BETWEEN_2DYNA_WAIT_TIME = 24       -- Hours before player can re-enter Dynamis. Default is 1 Earthday (24 hours).
+    BETWEEN_2DYNA_WAIT_TIME = 0       -- Hours before player can re-enter Dynamis. Default is 1 Earthday (24 hours).
         DYNA_MIDNIGHT_RESET = true     -- if true, makes the wait time count by number of server midnights instead of full 24 hour intervals
              DYNA_LEVEL_MIN = 65       -- level min for entering in Dynamis
     TIMELESS_HOURGLASS_COST = 500000   -- refund for the timeless hourglass for Dynamis.
    PRISMATIC_HOURGLASS_COST = 50000    -- cost of the prismatic hourglass for Dynamis.
      CURRENCY_EXCHANGE_RATE = 100      -- X Tier 1 ancient currency -> 1 Tier 2, and so on.  Certain values may conflict with shop items.  Not designed to exceed 198.
-RELIC_2ND_UPGRADE_WAIT_TIME = 7200     -- wait time for 2nd relic upgrade (stage 2 -> stage 3) in seconds. 7200s = 2 hours.
-RELIC_3RD_UPGRADE_WAIT_TIME = 3600     -- wait time for 3rd relic upgrade (stage 3 -> stage 4) in seconds. 3600s = 1 hour.
+RELIC_2ND_UPGRADE_WAIT_TIME = 300     -- wait time for 2nd relic upgrade (stage 2 -> stage 3) in seconds. 7200s = 2 hours.
+RELIC_3RD_UPGRADE_WAIT_TIME = 300     -- wait time for 3rd relic upgrade (stage 3 -> stage 4) in seconds. 3600s = 1 hour.
 FREE_COP_DYNAMIS = 0  -- Authorize player to entering inside COP Dynamis without completing COP mission ( 1 = enable 0= disable)
 
 -- QUEST/MISSION SPECIFIC SETTINGS
@@ -162,5 +162,5 @@ DIG_ABUNDANCE_BONUS = 0 -- Increase chance of digging up an item (450  = item di
 DIG_FATIGUE = 1 -- Set to 0 to disable Dig Fatigue
 DIG_GRANT_BURROW = 0 -- Set to 1 to grant burrow ability
 DIG_GRANT_BORE = 0 -- Set to 1 to grant bore ability
-ENM_COOLDOWN = 120  -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
+ENM_COOLDOWN = 0  -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
 FORCE_SPAWN_QM_RESET_TIME = 300 -- Number of seconds the ??? remains hidden for after the despawning of the mob it force spawns.
