@@ -647,6 +647,8 @@ public:
     int32 setUnkillable(lua_State* L);
     int32 untargetable(lua_State* L);
 
+    int32 getDelay(lua_State*);				  // gets the melee weapon delay
+	int32 getRDelay(lua_State*);              // gets the ranged weapon delay
     int32 setDelay(lua_State*);               // sets a mobs weapon delay
     int32 setDamage(lua_State*);              // sets a mobs weapon damage
     int32 hasSpellList(lua_State*);
