@@ -174,6 +174,20 @@ function onGameIn(player, firstLogin, zoning)
         player:addMod(tpz.mod.MDEF, 2500)
         player:addHP(50000)
         player:setMP(50000)
+    elseif player:getCharVar("GodMode") == 2 
+        player:addStatusEffect(tpz.effect.PERFECT_DODGE, 1, 0, 0)
+        player:addStatusEffect(tpz.effect.INVINCIBLE, 1, 0, 0)
+        player:addStatusEffect(tpz.effect.ELEMENTAL_SFORZO, 1, 0, 0)
+        player:addStatusEffect(tpz.effect.REFRESH, 99, 0, 0)
+        player:addStatusEffect(tpz.effect.REGEN, 99, 0, 0)
+        player:addMod(tpz.mod.RDEF, 2500)
+        player:addMod(tpz.mod.DEF, 2500)
+        player:addMod(tpz.mod.MDEF, 2500)
+        player:addHP(50000)
+        player:setMP(50000)
+    else    if player:getCharVar("GodMode") == 3 then
+        player:addStatusEffect(tpz.effect.REFRESH, 1, 0, 0)
+        player:addStatusEffect(tpz.effect.REGEN, 2, 0, 0)
     end
     
     -- !immortal
