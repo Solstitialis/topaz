@@ -1014,8 +1014,28 @@ int32 map_config_default()
     map_config.sj_mp_divisor = 2.0f;
     map_config.subjob_ratio = 1;
     map_config.include_mob_sj = false;
-    map_config.nm_stat_multiplier = 1.0f;
-    map_config.mob_stat_multiplier = 1.0f;
+    map_config.lvl10_nm_stat_multiplier = 1.0f;
+    map_config.lvl20_nm_stat_multiplier = 1.0f;
+    map_config.lvl30_nm_stat_multiplier = 1.0f;
+    map_config.lvl40_nm_stat_multiplier = 1.0f;
+    map_config.lvl50_nm_stat_multiplier = 1.0f;
+    map_config.lvl60_nm_stat_multiplier = 1.0f;
+    map_config.lvl70_nm_stat_multiplier = 1.0f;
+    map_config.lvl80_nm_stat_multiplier = 1.0f;
+    map_config.lvl90_nm_stat_multiplier = 1.0f;
+    map_config.lvl100_nm_stat_multiplier = 1.0f;
+    map_config.lvlmax_nm_stat_multiplier = 1.0f;
+    map_config.lvl10_mob_stat_multiplier = 1.0f;
+    map_config.lvl20_mob_stat_multiplier = 1.0f;
+    map_config.lvl30_mob_stat_multiplier = 1.0f;
+    map_config.lvl40_mob_stat_multiplier = 1.0f;
+    map_config.lvl50_mob_stat_multiplier = 1.0f;
+    map_config.lvl60_mob_stat_multiplier = 1.0f;
+    map_config.lvl70_mob_stat_multiplier = 1.0f;
+    map_config.lvl80_mob_stat_multiplier = 1.0f;
+    map_config.lvl90_mob_stat_multiplier = 1.0f;
+    map_config.lvl100_mob_stat_multiplier = 1.0f;
+    map_config.lvlmax_mob_stat_multiplier = 1.0f;
     map_config.player_stat_multiplier = 1.0f;
     map_config.ability_recast_multiplier = 1.0f;
     map_config.blood_pact_shared_timer = 0;
@@ -1207,13 +1227,93 @@ int32 map_config_read(const int8* cfgName)
         {
             map_config.include_mob_sj = atoi(w2);
         }
-        else if (strcmp(w1, "nm_stat_multiplier") == 0)
+        else if (strcmp(w1, "lvl10_nm_stat_multiplier") == 0)
         {
-            map_config.nm_stat_multiplier = (float)atof(w2);
+            map_config.lvl10_nm_stat_multiplier = (float)atof(w2);
         }
-        else if (strcmp(w1, "mob_stat_multiplier") == 0)
+        else if (strcmp(w1, "lvl20_nm_stat_multiplier") == 0)
         {
-            map_config.mob_stat_multiplier = (float)atof(w2);
+            map_config.lvl20_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl30_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl30_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl40_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl40_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl50_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl50_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl60_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl60_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl70_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl70_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl80_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl80_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl90_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl90_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl100_nm_stat_multiplier") == 0)
+        {
+            map_config.lvl100_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvlmax_nm_stat_multiplier") == 0)
+        {
+            map_config.lvlmax_nm_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl10_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl10_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl20_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl20_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl30_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl30_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl40_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl40_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl50_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl50_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl60_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl60_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl70_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl70_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl80_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl80_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl90_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl90_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvl100_mob_stat_multiplier") == 0)
+        {
+            map_config.lvl100_mob_stat_multiplier = (float)atof(w2);
+        }
+        else if (strcmp(w1, "lvlmax_mob_stat_multiplier") == 0)
+        {
+            map_config.lvlmax_mob_stat_multiplier = (float)atof(w2);
         }
         else if (strcmp(w1, "player_stat_multiplier") == 0)
         {

@@ -432,23 +432,229 @@ void CalculateStats(CMobEntity * PMob)
 
     if(isNM)
     {
-        PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.nm_stat_multiplier);
-        PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.nm_stat_multiplier);
-        PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.nm_stat_multiplier);
-        PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.nm_stat_multiplier);
-        PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.nm_stat_multiplier);
-        PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.nm_stat_multiplier);
-        PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.nm_stat_multiplier);
+        if (mLvl <= 10)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl10_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl10_nm_stat_multiplier);
+        }
+        else if (mLvl <= 20)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl20_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl20_nm_stat_multiplier);
+        }
+        else if (mLvl <= 30)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl30_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl30_nm_stat_multiplier);
+        }
+        else if (mLvl <= 40)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl40_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl40_nm_stat_multiplier);
+        }
+        else if (mLvl <= 50)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl50_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl50_nm_stat_multiplier);
+        }
+        else if (mLvl <= 60)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl60_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl60_nm_stat_multiplier);
+        }
+        else if (mLvl <= 70)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl70_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl70_nm_stat_multiplier);
+        }
+        else if (mLvl <= 80)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl80_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl80_nm_stat_multiplier);
+        }
+        else if (mLvl <= 90)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl90_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl90_nm_stat_multiplier);
+        }
+        else if (mLvl <= 100)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl100_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl100_nm_stat_multiplier);
+        }
+        else
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvlmax_nm_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvlmax_nm_stat_multiplier);
+        }
     }
     else
     {
-        PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.mob_stat_multiplier);
-        PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.mob_stat_multiplier);
-        PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.mob_stat_multiplier);
-        PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.mob_stat_multiplier);
-        PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.mob_stat_multiplier);
-        PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.mob_stat_multiplier);
-        PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.mob_stat_multiplier);
+        if (mLvl <= 10)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl10_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl10_mob_stat_multiplier);
+        }
+        else if (mLvl <= 20)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl20_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl20_mob_stat_multiplier);
+        }
+        else if (mLvl <= 30)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl30_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl30_mob_stat_multiplier);
+        }
+        else if (mLvl <= 40)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl40_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl40_mob_stat_multiplier);
+        }
+        else if (mLvl <= 50)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl50_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl50_mob_stat_multiplier);
+        }
+        else if (mLvl <= 60)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl60_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl60_mob_stat_multiplier);
+        }
+        else if (mLvl <= 70)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl70_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl70_mob_stat_multiplier);
+        }
+        else if (mLvl <= 80)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl80_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl80_mob_stat_multiplier);
+        }
+        else if (mLvl <= 90)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl90_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl90_mob_stat_multiplier);
+        }
+        else if (mLvl <= 100)
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvl100_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvl100_mob_stat_multiplier);
+        }
+        else
+        {
+            PMob->stats.STR = (uint16)(PMob->stats.STR * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.DEX = (uint16)(PMob->stats.DEX * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.VIT = (uint16)(PMob->stats.VIT * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.AGI = (uint16)(PMob->stats.AGI * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.INT = (uint16)(PMob->stats.INT * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.MND = (uint16)(PMob->stats.MND * map_config.lvlmax_mob_stat_multiplier);
+            PMob->stats.CHR = (uint16)(PMob->stats.CHR * map_config.lvlmax_mob_stat_multiplier);
+        }
     }
 
     // special case, give spell list to my pet

@@ -114,8 +114,28 @@ struct map_config_t
     float  sj_mp_divisor;             // Divisor to use on subjob max MP
     int8   subjob_ratio;              // Modify ratio of subjob-to-mainjob
     bool   include_mob_sj;            // Include mobs in effects of SJ ratio setting
-    float  nm_stat_multiplier;        // Multiplier for str/vit/etc of NMs
-    float  mob_stat_multiplier;       // Multiplier for str/vit/etc of mobs
+    float  lvl10_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl20_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl30_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl40_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl50_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl60_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl70_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl80_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl90_nm_stat_multiplier;  // Multiplier for str/vit/etc of NMs
+    float  lvl100_nm_stat_multiplier; // Multiplier for str/vit/etc of NMs
+    float  lvlmax_nm_stat_multiplier; // Multiplier for str/vit/etc of NMs
+    float  lvl10_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl20_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl30_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl40_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl50_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl60_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl70_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl80_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl90_mob_stat_multiplier;  // Multiplier for str/vit/etc of mobs
+    float  lvl100_mob_stat_multiplier; // Multiplier for str/vit/etc of mobs
+    float  lvlmax_mob_stat_multiplier; // Multiplier for str/vit/etc of mobs
     float  player_stat_multiplier;    // Multiplier for str/vit/etc. of NMs of player
     float  ability_recast_multiplier; // Adjust ability recast time
     int8   blood_pact_shared_timer;   // Default is 0. Disable/enable old school shared timer for SMN blood pacts.
