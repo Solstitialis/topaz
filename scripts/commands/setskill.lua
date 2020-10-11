@@ -55,7 +55,7 @@ function onTrigger(player, skillName, skillLV, target)
         end
     end
 
-    if (player:getGMLevel() <= targ:getGMLevel()) then
+    if (player ~= targ and player:getGMLevel() <= targ:getGMLevel()) then
         error(player, string.format("Insufficient permission to set skill to player named '%s'", target));
         return;
     end
