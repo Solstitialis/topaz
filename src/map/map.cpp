@@ -1091,6 +1091,7 @@ int32 map_config_default()
     map_config.skillup_bloodpact = true;
     map_config.anticheat_enabled = false;
     map_config.anticheat_jail_disable = false;
+    map_config.gmlevel_show_augments = 5;
     return 0;
 }
 
@@ -1555,6 +1556,10 @@ int32 map_config_read(const int8* cfgName)
         else if (strcmp(w1, "anticheat_jail_disable") == 0)
         {
             map_config.anticheat_jail_disable = atoi(w2);
+        }
+        else if (strcmp(w1, "gmlevel_show_augments") == 0)
+        {
+            map_config.gmlevel_show_augments = atoi(w2);
         }
         else
         {
