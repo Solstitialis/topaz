@@ -27,7 +27,7 @@ function onZoneIn(player, prevZone)
     end
     if (player:getCurrentMission(ZILART) == tpz.mission.id.zilart.THE_NEW_FRONTIER and player:getRank(player:getNation()) >= 6) then
         cs = 1
-    elseif (player:getCurrentMission(ZILART) == tpz.mission.id.zilart.AWAKENING and player:getCharVar("ZilartStatus") == 0 or player:getCharVar("ZilartStatus") == 2) then
+    elseif (player:getCurrentMission(ZILART) == tpz.mission.id.zilart.AWAKENING and (player:getCharVar("ZilartStatus") == 0 or player:getCharVar("ZilartStatus") == 2)) then
         cs = 176
     end
 
