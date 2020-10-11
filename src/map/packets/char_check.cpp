@@ -29,6 +29,7 @@
 #include "../entities/charentity.h"
 #include "../utils/itemutils.h"
 #include "../vana_time.h"
+#include "../map.h"
 
 
 CCheckPacket::CCheckPacket(CCharEntity* PChar, CCharEntity* PTarget)
@@ -65,7 +66,7 @@ CCheckPacket::CCheckPacket(CCharEntity* PChar, CCharEntity* PTarget)
 				ref<uint32>(size * 2 + 0x0C) = ((CItemUsable*)PItem)->getUseDelay() + currentTime;
 			}
 
-            if (PItem->isSubType(ITEM_AUGMENTED))
+            if (PItem->isSubType(ITEM_AUGMENTED) && PChar->m_GMlevel >= map_config.gmlevel_show_augments)
             {
                 ref<uint8>(size * 2 + 0x04) = 0x02;
 
