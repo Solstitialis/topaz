@@ -1010,6 +1010,7 @@ int32 map_config_default()
     map_config.ah_list_limit = 7;
     map_config.exp_rate = 1.0f;
     map_config.exp_loss_rate = 1.0f;
+    map_config.exp_chain_time_multiplier = 1.0f;
     map_config.exp_retain = 0.0f;
     map_config.exp_loss_level = 4;
     map_config.level_sync_enable = 0;
@@ -1220,6 +1221,10 @@ int32 map_config_read(const int8* cfgName)
         else if (strcmp(w1, "exp_party_gap_penalties") == 0)
         {
             map_config.exp_party_gap_penalties = (uint8)atof(w2);
+        }
+        else if (strcmp(w1, "exp_chain_time_multiplier") == 0)
+        {
+            map_config.exp_chain_time_multiplier = (float)atof(w2);
         }
         else if (strcmp(w1, "mob_tp_multiplier") == 0)
         {

@@ -3441,13 +3441,13 @@ namespace charutils
                         }
                         else
                         {
-                            if (PMember->GetMLevel() <= 10) PMember->expChain.chainTime = gettick() + 50000;
-                            else if (PMember->GetMLevel() <= 20) PMember->expChain.chainTime = gettick() + 100000;
-                            else if (PMember->GetMLevel() <= 30) PMember->expChain.chainTime = gettick() + 150000;
-                            else if (PMember->GetMLevel() <= 40) PMember->expChain.chainTime = gettick() + 200000;
-                            else if (PMember->GetMLevel() <= 50) PMember->expChain.chainTime = gettick() + 250000;
-                            else if (PMember->GetMLevel() <= 60) PMember->expChain.chainTime = gettick() + 300000;
-                            else PMember->expChain.chainTime = gettick() + 360000;
+                            if (PMember->GetMLevel() <= 10) PMember->expChain.chainTime = gettick() + static_cast<uint32>(50000 * map_config.exp_chain_time_multiplier);
+                            else if (PMember->GetMLevel() <= 20) PMember->expChain.chainTime = gettick() + static_cast<uint32>(100000 * map_config.exp_chain_time_multiplier);
+                            else if (PMember->GetMLevel() <= 30) PMember->expChain.chainTime = gettick() + static_cast<uint32>(150000 * map_config.exp_chain_time_multiplier);
+                            else if (PMember->GetMLevel() <= 40) PMember->expChain.chainTime = gettick() + static_cast<uint32>(200000 * map_config.exp_chain_time_multiplier);
+                            else if (PMember->GetMLevel() <= 50) PMember->expChain.chainTime = gettick() + static_cast<uint32>(250000 * map_config.exp_chain_time_multiplier);
+                            else if (PMember->GetMLevel() <= 60) PMember->expChain.chainTime = gettick() + static_cast<uint32>(300000 * map_config.exp_chain_time_multiplier);
+                            else PMember->expChain.chainTime = gettick() + static_cast<uint32>(360000 * map_config.exp_chain_time_multiplier);
                             PMember->expChain.chainNumber = 1;
                         }
 
@@ -3455,91 +3455,91 @@ namespace charutils
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 50000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 40000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 30000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 20000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 10000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 6000; break;
-                                default: PMember->expChain.chainTime = gettick() + 2000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(50000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(40000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(30000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(20000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(10000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(6000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(2000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive && PMember->GetMLevel() <= 20)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 100000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 80000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 60000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 40000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 20000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 8000; break;
-                                default: PMember->expChain.chainTime = gettick() + 4000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(100000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(80000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(40000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(20000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(8000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(4000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive && PMember->GetMLevel() <= 30)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 150000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 120000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 90000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 60000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 30000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 10000; break;
-                                default: PMember->expChain.chainTime = gettick() + 5000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(150000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(120000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(90000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(30000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(10000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(5000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive && PMember->GetMLevel() <= 40)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 200000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 160000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 120000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 80000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 40000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 40000; break;
-                                default: PMember->expChain.chainTime = gettick() + 30000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(200000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(160000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(120000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(80000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(40000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(40000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(30000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive && PMember->GetMLevel() <= 50)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 250000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 200000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 150000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 100000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 50000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 50000; break;
-                                default: PMember->expChain.chainTime = gettick() + 50000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(250000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(200000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(150000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(100000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(50000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(50000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(50000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive && PMember->GetMLevel() <= 60)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 300000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 240000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 180000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 120000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 90000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 60000; break;
-                                default: PMember->expChain.chainTime = gettick() + 60000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(300000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(240000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(180000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(120000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(90000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                         else if (chainactive)
                         {
                             switch (PMember->expChain.chainNumber)
                             {
-                                case 0: PMember->expChain.chainTime = gettick() + 360000; break;
-                                case 1: PMember->expChain.chainTime = gettick() + 300000; break;
-                                case 2: PMember->expChain.chainTime = gettick() + 240000; break;
-                                case 3: PMember->expChain.chainTime = gettick() + 165000; break;
-                                case 4: PMember->expChain.chainTime = gettick() + 105000; break;
-                                case 5: PMember->expChain.chainTime = gettick() + 60000; break;
-                                default: PMember->expChain.chainTime = gettick() + 60000; break;
+                                case 0: PMember->expChain.chainTime = gettick() + static_cast<uint32>(360000 * map_config.exp_chain_time_multiplier); break;
+                                case 1: PMember->expChain.chainTime = gettick() + static_cast<uint32>(300000 * map_config.exp_chain_time_multiplier); break;
+                                case 2: PMember->expChain.chainTime = gettick() + static_cast<uint32>(240000 * map_config.exp_chain_time_multiplier); break;
+                                case 3: PMember->expChain.chainTime = gettick() + static_cast<uint32>(165000 * map_config.exp_chain_time_multiplier); break;
+                                case 4: PMember->expChain.chainTime = gettick() + static_cast<uint32>(105000 * map_config.exp_chain_time_multiplier); break;
+                                case 5: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
+                                default: PMember->expChain.chainTime = gettick() + static_cast<uint32>(60000 * map_config.exp_chain_time_multiplier); break;
                             }
                         }
                     }
