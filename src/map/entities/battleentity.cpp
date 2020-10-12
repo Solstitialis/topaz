@@ -307,13 +307,23 @@ int16 CBattleEntity::GetRangedWeaponDelay(bool tp)
     CItemWeapon* PRange = (CItemWeapon*)m_Weapons[SLOT_RANGED];
     CItemWeapon* PAmmo = (CItemWeapon*)m_Weapons[SLOT_AMMO];
 
+    // flag for throwing weapon in ammo slot
+    bool isThrowingAmmo = false;
+
     // base delay
     int16 delay = 0;
 
     if (PRange != nullptr && PRange->getDamage() != 0) {
-        delay = ((PRange->getDelay() * 60) / 1000);
+        delay = ((PRange->getDelay() * 60) / 1000); //convert from seconds to delay value
+    }
+    else if (PAmmo != nullptr && PAmmo->getDamage() != 0)
+    {
+        // Throwing weapon in ammo slot, so get ammo delay instead
+        delay = ((PAmmo->getDelay() * 60) / 1000); //convert from seconds to delay value
+        isThrowingAmmo = true;
     }
 
+    //Apply RANGED_DELAY mod and convert delay value back to seconds
     delay = (((delay - getMod(Mod::RANGED_DELAY)) * 1000) / 120);
 
     //apply haste and delay reductions that don't affect tp
@@ -321,8 +331,10 @@ int16 CBattleEntity::GetRangedWeaponDelay(bool tp)
     {
         delay = (int16)(delay * ((100.0f + getMod(Mod::RANGED_DELAYP)) / 100.0f));
     }
-    else if (PAmmo)
+    else if (PAmmo && isThrowingAmmo == false)
     {
+        //Add the ammo delay for tp calculations, but don't add throwing ammo delay twice
+        // value is /2 because ranged delay is 120 delay/s instead of 60 delay/s
         delay += PAmmo->getDelay() / 2;
     }
     return delay;
