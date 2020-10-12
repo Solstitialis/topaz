@@ -261,7 +261,7 @@ int16 CBattleEntity::GetWeaponDelay(bool tp)
     if (auto weapon = dynamic_cast<CItemWeapon*>(m_Weapons[SLOT_MAIN]))
     {
         uint16 MinimumDelay = weapon->getDelay(); // Track base delay.  We will need this later.  Mod::DELAY is ignored for now.
-        WeaponDelay = weapon->getDelay() - getMod(Mod::DELAY);
+        WeaponDelay = weapon->getDelay() - getMod(Mod::DELAY) * 1000 / 60;
         if (weapon->isHandToHand())
         {
             WeaponDelay -= getMod(Mod::MARTIAL_ARTS) * 1000 / 60;

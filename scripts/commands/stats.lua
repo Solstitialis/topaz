@@ -69,10 +69,10 @@ function onTrigger(player)
     player:PrintToPlayer(message);
 
     message = "";
-    local delaySeconds = player:getDelay()/1000; -- Shows weapon delay with all mods applied. To Debug: Same as weapon delay with only single-handed weapon and no buffs.
+    local delaySeconds = player:getDelay()/1000;
     local rDelaySeconds = player:getRDelay()/1000;
-    local delay = math.floor(delaySeconds*60*10+0.5)*0.1;
-    local rDelay = math.floor(rDelaySeconds*120*10+0.5)*0.1;   
+    local delay = math.floor(delaySeconds*60+0.5); -- Shows weapon delay with all mods applied. Debug: Should show same delay as single-handed weapon when there are no mods.
+    local rDelay = math.floor(rDelaySeconds*120+0.5);   
     message = message .. string.format("Delay: %s(%ss)\n", delay, delaySeconds);
     message = message .. string.format("R.Delay: %s(%ss)\n", rDelay, rDelaySeconds);
     message = message .. string.format("Delay Mod: %s      Delay%% Mod: %s\n", player:getMod(tpz.mod.DELAY), player:getMod(tpz.mod.DELAYP));
