@@ -81,7 +81,7 @@ function onTrigger(player)
 
     message = "";
     message = message .. string.format("Dual Wield: %s\n", player:getMod(tpz.mod.DUAL_WIELD));
-    message = message .. string.format("Haste Gear: %s   Haste Magic: %s   Haste Ability: %s\n", player:getMod(tpz.mod.HASTE_GEAR), player:getMod(tpz.mod.HASTE_MAGIC), player:getMod(tpz.mod.HASTE_ABILITY));
+    message = message .. string.format("Haste Gear: %s%%   Haste Magic: %s%%   Haste Ability: %s%%\n", player:getMod(tpz.mod.HASTE_GEAR)/100, player:getMod(tpz.mod.HASTE_MAGIC)/100, player:getMod(tpz.mod.HASTE_ABILITY)/100);
     message = message .. string.format("Fast Cast: %s   Conserve MP: %s   Death Resist: %s\n", player:getMod(tpz.mod.FASTCAST), player:getMod(tpz.mod.CONSERVE_MP), player:getMod(tpz.mod.DEATHRES));
     player:PrintToPlayer(message);
     
