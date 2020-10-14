@@ -112,7 +112,7 @@ namespace battleutils
     int32           GetRangedAccuracyBonuses(CBattleEntity* battleEntity);
 
     uint8           GetSkillRank(SKILLTYPE SkillID, JOBTYPE JobID);
-    uint16          GetMaxSkill(SKILLTYPE SkillID, JOBTYPE JobID, uint8 level);
+    uint16          GetMaxSkill(SKILLTYPE SkillID, JOBTYPE JobID, uint8 level, CBattleEntity* PEntity);
     uint16          GetMaxSkill(uint8 rank, uint8 level);
 
     CWeaponSkill*   GetWeaponSkill(uint16 WSkillID);

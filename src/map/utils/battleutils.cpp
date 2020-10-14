@@ -301,9 +301,76 @@ namespace battleutils
     *   Return Max Skill by SkillType, JobType, and level                   *
     ************************************************************************/
 
-    uint16 GetMaxSkill(SKILLTYPE SkillID, JOBTYPE JobID, uint8 level)
+    uint16 GetMaxSkill(SKILLTYPE SkillID, JOBTYPE JobID, uint8 level, CBattleEntity* PEntity)
     {
-        return g_SkillTable[level][g_SkillRanks[SkillID][JobID]];
+        // Get the default skill rank
+        uint8 rank = g_SkillRanks[SkillID][JobID];
+
+        // If not R0 (i.e. entity has skill) and PEntity is type CCharEntity (i.e. PC),
+        // check if there are GM buffs
+        if (rank != 0 && PEntity != nullptr && PEntity->objtype == TYPE_PC)
+        {
+            CCharEntity* PChar = ((CCharEntity*)PEntity);
+            switch (SkillID)
+            {
+                // weapon skills
+                case SKILL_HAND_TO_HAND:
+                case SKILL_DAGGER:
+                case SKILL_SWORD:
+                case SKILL_GREAT_SWORD:
+                case SKILL_AXE:
+                case SKILL_GREAT_AXE:
+                case SKILL_SCYTHE:
+                case SKILL_POLEARM:
+                case SKILL_KATANA:
+                case SKILL_GREAT_KATANA:
+                case SKILL_CLUB:
+                case SKILL_STAFF:
+                case SKILL_ARCHERY:
+                case SKILL_MARKSMANSHIP:
+                case SKILL_THROWING:
+                    if (PChar->m_GMlevel >= map_config.gmlevel_weapon_skill_cap_rank
+                        && map_config.weapon_skill_cap_rank >= 1)
+                    {
+                        rank = std::min<uint8>(rank, map_config.weapon_skill_cap_rank);
+                    }
+                    break;
+                // defense skills
+                case SKILL_GUARD:
+                case SKILL_EVASION:
+                case SKILL_SHIELD:
+                case SKILL_PARRY:
+                    if (PChar->m_GMlevel >= map_config.gmlevel_defense_skill_cap_rank
+                        && map_config.defense_skill_cap_rank >= 1)
+                    {
+                        rank = std::min<uint8>(rank, map_config.defense_skill_cap_rank);
+                    }
+                    break;
+                // magic skills
+                case SKILL_DIVINE_MAGIC:
+                case SKILL_HEALING_MAGIC:
+                case SKILL_ENHANCING_MAGIC:
+                case SKILL_ENFEEBLING_MAGIC:
+                case SKILL_ELEMENTAL_MAGIC:
+                case SKILL_DARK_MAGIC:
+                case SKILL_SUMMONING_MAGIC:
+                case SKILL_NINJUTSU:
+                case SKILL_SINGING:
+                case SKILL_STRING_INSTRUMENT:
+                case SKILL_WIND_INSTRUMENT:
+                case SKILL_BLUE_MAGIC:
+                case SKILL_GEOMANCY:
+                case SKILL_HND:
+                    if (PChar->m_GMlevel >= map_config.gmlevel_magic_skill_cap_rank
+                        && map_config.magic_skill_cap_rank >= 1)
+                    {
+                        rank = std::min<uint8>(rank, map_config.magic_skill_cap_rank);
+                    }
+                    break;
+            }
+        }
+
+        return g_SkillTable[level][rank];
     }
 
     uint16 GetMaxSkill(uint8 rank, uint8 level)
@@ -1441,7 +1508,7 @@ namespace battleutils
         else
         {
             //assume mobs capped
-            rAttack = battleutils::GetMaxSkill(SKILL_ARCHERY, JOB_RNG, PAttacker->GetMLevel());
+            rAttack = battleutils::GetMaxSkill(SKILL_ARCHERY, JOB_RNG, PAttacker->GetMLevel(), nullptr);
         }
 
         //get ratio (not capped for RAs)
@@ -1549,13 +1616,13 @@ namespace battleutils
                 skill = 1;
             }
 
-            float cap = GetMaxSkill((SKILLTYPE)PSpell->getSkillType(), PChar->GetMJob(), PChar->GetMLevel());
+            float cap = GetMaxSkill((SKILLTYPE)PSpell->getSkillType(), PChar->GetMJob(), PChar->GetMLevel(), PChar);
 
             //if cap is 0 then player is using a spell from their subjob
             if (cap == 0)
             {
                 cap = GetMaxSkill((SKILLTYPE)PSpell->getSkillType(), PChar->GetSJob(),
-                    PChar->GetMLevel()); // This may need to be re-investigated in the future...
+                    PChar->GetMLevel(), PChar); // This may need to be re-investigated in the future...
             }
 
             if (skill > cap)
