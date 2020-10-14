@@ -8082,19 +8082,22 @@ inline int32 CLuaBaseEntity::capSkill(lua_State* L)
         }
         */
         uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)skill, PChar->GetMJob(), PChar->GetMLevel(), PChar);
-        PChar->RealSkills.skill[skill] = maxSkill; //set to capped
-        PChar->WorkingSkills.skill[skill] = maxSkill / 10;
-        PChar->WorkingSkills.skill[skill] |= 0x8000; //set blue capped flag
-        PChar->pushPacket(new CCharSkillsPacket(PChar));
-        charutils::CheckWeaponSkill(PChar, skill);
-        /* and ignore this part
-        //reapply modifiers if valid
-        if(skill>=1 && skill<=12 && PItem!=nullptr && PItem->getSkillType()==skill){
-            PChar->addModifier(Mod::ATT, PChar->GetSkill(skill));
-            PChar->addModifier(Mod::ACC, PChar->GetSkill(skill));
+        if (maxSkill > 0 && PChar->RealSkills.skill[skill] < maxSkill)
+        {
+            PChar->RealSkills.skill[skill] = maxSkill; //set to capped
+            PChar->WorkingSkills.skill[skill] = maxSkill / 10;
+            PChar->WorkingSkills.skill[skill] |= 0x8000; //set blue capped flag
+            PChar->pushPacket(new CCharSkillsPacket(PChar));
+            charutils::CheckWeaponSkill(PChar, skill);
+            /* and ignore this part
+            //reapply modifiers if valid
+            if(skill>=1 && skill<=12 && PItem!=nullptr && PItem->getSkillType()==skill){
+                PChar->addModifier(Mod::ATT, PChar->GetSkill(skill));
+                PChar->addModifier(Mod::ACC, PChar->GetSkill(skill));
+            }
+            */
+            charutils::SaveCharSkills(PChar, skill); //save to db
         }
-        */
-        charutils::SaveCharSkills(PChar, skill); //save to db
     }
     return 0;
 }
@@ -8132,9 +8135,12 @@ inline int32 CLuaBaseEntity::capAllSkills(lua_State* L)
             PChar->RealSkills.rank[i]);
 
         uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)i, PChar->GetMJob(), PChar->GetMLevel(), PChar);
-        PChar->RealSkills.skill[i] = maxSkill; //set to capped
-        PChar->WorkingSkills.skill[i] = maxSkill / 10;
-        PChar->WorkingSkills.skill[i] |= 0x8000; //set blue capped flag
+        if (maxSkill > 0 && PChar->RealSkills.skill[i] < maxSkill)
+        {
+            PChar->RealSkills.skill[i] = maxSkill; //set to capped
+            PChar->WorkingSkills.skill[i] = maxSkill / 10;
+            PChar->WorkingSkills.skill[i] |= 0x8000; //set blue capped flag
+        }        
     }
     charutils::CheckWeaponSkill(PChar, SKILL_NONE);
     PChar->pushPacket(new CCharSkillsPacket(PChar));
