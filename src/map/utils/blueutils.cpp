@@ -128,7 +128,7 @@ void TryLearningSpells(CCharEntity* PChar, CMobEntity* PMob) {
 			}
 
             // get the skill cap for the spell level
-            auto skillLvlForSpell = battleutils::GetMaxSkill(SKILL_BLUE_MAGIC, JOB_BLU, PSpell->getJob(JOB_BLU));
+            auto skillLvlForSpell = battleutils::GetMaxSkill(SKILL_BLUE_MAGIC, JOB_BLU, PSpell->getJob(JOB_BLU), nullptr);
             // get player skill level with bonus from gear
             auto playerSkillLvl = PBlueMage->GetSkill(SKILL_BLUE_MAGIC);
 
