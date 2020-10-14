@@ -8081,7 +8081,7 @@ inline int32 CLuaBaseEntity::capSkill(lua_State* L)
             PChar->delModifier(Mod::ACC, PChar->GetSkill(skill));
         }
         */
-        uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)skill, PChar->GetMJob(), PChar->GetMLevel());
+        uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)skill, PChar->GetMJob(), PChar->GetMLevel(), PChar);
         PChar->RealSkills.skill[skill] = maxSkill; //set to capped
         PChar->WorkingSkills.skill[skill] = maxSkill / 10;
         PChar->WorkingSkills.skill[skill] |= 0x8000; //set blue capped flag
@@ -8131,7 +8131,7 @@ inline int32 CLuaBaseEntity::capAllSkills(lua_State* L)
             5000,
             PChar->RealSkills.rank[i]);
 
-        uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)i, PChar->GetMJob(), PChar->GetMLevel());
+        uint16 maxSkill = 10 * battleutils::GetMaxSkill((SKILLTYPE)i, PChar->GetMJob(), PChar->GetMLevel(), PChar);
         PChar->RealSkills.skill[i] = maxSkill; //set to capped
         PChar->WorkingSkills.skill[i] = maxSkill / 10;
         PChar->WorkingSkills.skill[i] |= 0x8000; //set blue capped flag
@@ -8211,7 +8211,14 @@ inline int32 CLuaBaseEntity::getMaxSkillLevel(lua_State *L)
     JOBTYPE job = (JOBTYPE)lua_tointeger(L, -2);
     auto level = (uint8)lua_tointeger(L, -3);
 
-    lua_pushinteger(L, battleutils::GetMaxSkill(skill, job, level));
+    // if m_PBaseEntity is type CCharEntity (i.e. PC),
+    // apply GetMaxSkill PChar parameter to check for gm skill cap increase here
+    CCharEntity* PChar = nullptr;
+    if (m_PBaseEntity->objtype == TYPE_PC)
+    {
+        PChar = ((CCharEntity*)m_PBaseEntity);
+    }
+    lua_pushinteger(L, battleutils::GetMaxSkill(skill, job, level, PChar));
     return 1;
 }
 
