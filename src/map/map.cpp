@@ -1097,9 +1097,11 @@ int32 map_config_default()
     map_config.gmlevel_weapon_skill_cap_rank = 5;
     map_config.gmlevel_defense_skill_cap_rank = 5;
     map_config.gmlevel_magic_skill_cap_rank = 5;
+    map_config.gmlevel_conserve_mp = 5;
     map_config.weapon_skill_cap_rank = 1;
     map_config.defense_skill_cap_rank = 1;
     map_config.magic_skill_cap_rank = 1;
+    map_config.conserve_mp_multiplier = 1.0f;
     map_config.gmlevel_show_augments = 5;
     return 0;
 }
@@ -1590,6 +1592,10 @@ int32 map_config_read(const int8* cfgName)
         {
             map_config.gmlevel_magic_skill_cap_rank = atoi(w2);
         }
+        else if (strcmp(w1, "gmlevel_conserve_mp") == 0)
+        {
+            map_config.gmlevel_conserve_mp = atoi(w2);
+        }
         else if (strcmp(w1, "weapon_skill_cap_rank") == 0)
         {
             map_config.weapon_skill_cap_rank = atoi(w2);
@@ -1601,6 +1607,10 @@ int32 map_config_read(const int8* cfgName)
         else if (strcmp(w1, "magic_skill_cap_rank") == 0)
         {
             map_config.magic_skill_cap_rank = atoi(w2);
+        }
+        else if (strcmp(w1, "conserve_mp_multiplier") == 0)
+        {
+            map_config.conserve_mp_multiplier = (float)atof(w2);
         }
         else if (strcmp(w1, "gmlevel_show_augments") == 0)
         {
