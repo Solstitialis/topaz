@@ -1067,6 +1067,8 @@ int32 map_config_default()
     map_config.skillup_bloodpact = true;
     map_config.anticheat_enabled = false;
     map_config.anticheat_jail_disable = false;
+    map_config.gmlevel_infinite_ammo = 5;
+    map_config.gmlevel_omit_nin_tool = 5;
     map_config.gmlevel_weapon_skill_cap_rank = 5;
     map_config.gmlevel_defense_skill_cap_rank = 5;
     map_config.gmlevel_magic_skill_cap_rank = 5;
@@ -1530,6 +1532,14 @@ int32 map_config_read(const int8* cfgName)
         else if (strcmp(w1, "anticheat_jail_disable") == 0)
         {
             map_config.anticheat_jail_disable = atoi(w2);
+        }
+        else if (strcmp(w1, "gmlevel_infinite_ammo") == 0)
+        {
+            map_config.gmlevel_infinite_ammo = atoi(w2);
+        }
+        else if (strcmp(w1, "gmlevel_omit_nin_tool") == 0)
+        {
+            map_config.gmlevel_omit_nin_tool = atoi(w2);
         }
         else if (strcmp(w1, "gmlevel_weapon_skill_cap_rank") == 0)
         {

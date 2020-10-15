@@ -3261,6 +3261,11 @@ namespace battleutils
         if (PEntity->objtype == TYPE_PC)
         {
             CCharEntity* PChar = ((CCharEntity*)PEntity);
+            if (PChar->m_GMlevel >= map_config.gmlevel_omit_nin_tool)
+            {
+                // tool is not consumed
+                return true;
+            }
 
             uint8  SlotID = 0;
             uint16 toolID = PSpell->getMPCost();
@@ -5564,6 +5569,12 @@ namespace battleutils
 
     bool RemoveAmmo(CCharEntity* PChar, int quantity)
     {
+        if (PChar->objtype == TYPE_PC && PChar->m_GMlevel >= map_config.gmlevel_infinite_ammo)
+        {
+            // ammo is not consumed
+            return false;
+        }
+
         CItemWeapon* PItem = (CItemWeapon*)PChar->getEquip(SLOT_AMMO);
 
         if (PItem)
