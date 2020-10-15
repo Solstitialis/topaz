@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
--- func: godmode
+-- func: easymode
 -- desc: Toggles god mode on the player, granting them several special abilities.
 ---------------------------------------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ cmdprops =
 }
 
 function onTrigger(player)
-    if (player:getCharVar("GodMode") == 0) then
+    if (player:getCharVar("GodMode") ~= 3) then
         -- Toggle GodMode on..
         player:setCharVar("GodMode", 3)
 
