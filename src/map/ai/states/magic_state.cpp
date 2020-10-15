@@ -253,7 +253,14 @@ void CMagicState::SpendCost()
 
         if (tpzrand::GetRandomNumber(100) < rate)
         {
-            cost = (int16)(cost * (tpzrand::GetRandomNumber(8.f, 16.f) / 16.0f));
+            if (m_PEntity->objtype == TYPE_PC && ((CCharEntity*)m_PEntity)->m_GMlevel >= map_config.gmlevel_conserve_mp)
+            {
+                cost = (int16)(cost * (tpzrand::GetRandomNumber(8.f * map_config.conserve_mp_multiplier, 16.f * map_config.conserve_mp_multiplier) / 16.0f));
+            }
+            else
+            {
+                cost = (int16)(cost * (tpzrand::GetRandomNumber(8.f, 16.f) / 16.0f));
+            }            
         }
 
         m_PEntity->addMP(-cost);
