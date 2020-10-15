@@ -10,7 +10,7 @@ cmdprops =
 }
 
 function onTrigger(player)
-    if (player:getCharVar("GodMode") == 0) then
+    if (player:getCharVar("GodMode") ~= 1) then
         -- Toggle GodMode on..
         player:setCharVar("GodMode", 1)
 
