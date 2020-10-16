@@ -1653,8 +1653,15 @@ namespace charutils
                 {
                     PChar->look.sub = 0;
                     PChar->m_Weapons[SLOT_SUB] = itemutils::GetUnarmedItem(); // << equips "nothing" in the sub slot to prevent multi attack exploit
-                    PChar->health.tp = 0;
-                    PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    if (PChar->m_GMlevel >= map_config.gmlevel_equip_no_tp_loss)
+                    {
+                        // Do nothing. No TP loss. No loss of Aftermath.
+                    }
+                    else
+                    {
+                        PChar->health.tp = 0;
+                        PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    }
                     BuildingCharWeaponSkills(PChar);
                     UpdateWeaponStyle(PChar, equipSlotID, nullptr);
                 }
@@ -1676,11 +1683,18 @@ namespace charutils
                         PChar->look.ranged = 0;
                     }
                     PChar->m_Weapons[SLOT_RANGED] = nullptr;
-                    if (((CItemWeapon*)PItem)->getSkillType() != SKILL_STRING_INSTRUMENT && ((CItemWeapon*)PItem)->getSkillType() != SKILL_WIND_INSTRUMENT)
+                    if (PChar->m_GMlevel >= map_config.gmlevel_equip_no_tp_loss)
                     {
-                        PChar->health.tp = 0;
+                        // Do nothing. No TP loss. No loss of Aftermath.
                     }
-                    PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    else
+                    {
+                        if (((CItemWeapon*)PItem)->getSkillType() != SKILL_STRING_INSTRUMENT && ((CItemWeapon*)PItem)->getSkillType() != SKILL_WIND_INSTRUMENT)
+                        {
+                            PChar->health.tp = 0;
+                        }
+                        PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    }
                     BuildingCharWeaponSkills(PChar);
                     UpdateWeaponStyle(PChar, equipSlotID, nullptr);
                 }
@@ -1707,8 +1721,15 @@ namespace charutils
                         CheckUnarmedWeapon(PChar);
                     }
 
-                    PChar->health.tp = 0;
-                    PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    if (PChar->m_GMlevel >= map_config.gmlevel_equip_no_tp_loss)
+                    {
+                        // Do nothing. No TP loss. No loss of Aftermath.
+                    }
+                    else
+                    {
+                        PChar->health.tp = 0;
+                        PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
+                    }                    
                     BuildingCharWeaponSkills(PChar);
                     UpdateWeaponStyle(PChar, equipSlotID, nullptr);
                 }
@@ -2202,12 +2223,20 @@ namespace charutils
         }
         if (equipSlotID == SLOT_MAIN || equipSlotID == SLOT_RANGED || equipSlotID == SLOT_SUB)
         {
-            if (!PItem || !PItem->isType(ITEM_EQUIPMENT) ||
+            if (PChar->m_GMlevel >= map_config.gmlevel_equip_no_tp_loss)
+            {
+                // Do nothing. No TP loss. No loss of Aftermath.
+            }
+            else
+            {
+                if (!PItem || !PItem->isType(ITEM_EQUIPMENT) ||
                 ( ((CItemWeapon*)PItem)->getSkillType() != SKILL_STRING_INSTRUMENT &&
                   ((CItemWeapon*)PItem)->getSkillType() != SKILL_WIND_INSTRUMENT ))
-            {
-                // If the weapon ISN'T a wind based instrument or a string based instrument
-                PChar->health.tp = 0;
+                {
+                    // If the weapon ISN'T a wind based instrument or a string based instrument
+                    PChar->health.tp = 0;
+                }
+                PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
             }
 
             /*// fixes logging in with no h2h
@@ -2226,7 +2255,6 @@ namespace charutils
                 CheckUnarmedWeapon(PChar);
             }
 
-            PChar->StatusEffectContainer->DelStatusEffect(EFFECT_AFTERMATH);
             BuildingCharWeaponSkills(PChar);
             PChar->pushPacket(new CCharAbilitiesPacket(PChar));
         }
