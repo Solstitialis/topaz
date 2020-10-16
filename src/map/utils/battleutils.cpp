@@ -1640,6 +1640,12 @@ namespace battleutils
 
         float interruptRate = ((float)((100.0f - (meritReduction + (float)PDefender->getMod(Mod::SPELLINTERRUPT))) / 100.0f));
         check *= interruptRate;
+
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_decrease_spell_interrupt)
+        {
+            check *= map_config.decrease_spell_interrupt_multiplier;
+        }
+
         uint8 chance = tpzrand::GetRandomNumber(100);
 
         // caps, always give a 1% chance of interrupt
@@ -1647,6 +1653,7 @@ namespace battleutils
             check = 0;
         }
 
+        // Interrupt if chance < check. Lower check means less likely to interrupt.
         if (chance < check)
         {
             // Prevent interrupt if Aquaveil is active, if it were to interrupt.

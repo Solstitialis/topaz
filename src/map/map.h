@@ -170,10 +170,12 @@ struct map_config_t
     int8   gmlevel_defense_skill_cap_rank; // Minimum GM level where defense skill cap is increased
     int8   gmlevel_magic_skill_cap_rank;   // Minimum GM level where magic skill cap is increased
     int8   gmlevel_conserve_mp;       // Minimum GM level where conserve mp is more potent
+    int8   gmlevel_decrease_spell_interrupt;    // Minimum GM level where spell interruption is decreased
     uint8  weapon_skill_cap_rank;     // Change skill cap rank. Will not allow r0 to be changed.
     uint8  defense_skill_cap_rank;    // Change skill cap rank. Will not allow r0 to be changed.
     uint8  magic_skill_cap_rank;      // Change skill cap rank. Will not allow r0 to be changed.
     float  conserve_mp_multiplier;    // Increase effect of conserve mp (i.e. 0.75 on a 8/16 proc means mp cost of 6/16)
+    float  decrease_spell_interrupt_multiplier; // Decrease chance of spell interruption (i.e. 0.25 means 75% less chance of interruption)
     int8   gmlevel_show_augments;     // Minimum GM level where examine will show item augments
 };
 
