@@ -72,6 +72,8 @@ public:
 	void    setUnlockablePoints(uint16 points);
     void    setCurrentUnlockPoints(uint16 points);
 
+    uint8   getMaxHits();
+
 private:
 
 	uint8	m_skillType;
