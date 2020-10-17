@@ -349,6 +349,14 @@ uint8 CItemWeapon::getHitCount()
 	return battleutils::getHitCount(m_maxHit);
 }
 
+/// <summary>
+/// Gets the max number of hits of a weapon (i.e. 1 for most weapons. 8 for Kraken Club)
+/// </summary>
+/// <returns>Max number of hits of a weapon.</returns>
+uint8 CItemWeapon::getMaxHits()
+{
+    return m_maxHit;
+}
 
 //Blunt = MOD_HANDTOHAND, MOD_CLUB, MOD_STAFF
 //Slashing = MOD_AXE, MOD_GREATAXE, MOD_GREATSWORD, MOD_SWORD, MOD_SCYTHE, MOD_KATANA, MOD_GREATKATANA

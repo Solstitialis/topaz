@@ -25,6 +25,7 @@
 #include "status_effect_container.h"
 #include "ai/ai_container.h"
 #include "mob_modifier.h"
+#include "map.h"
 
 /************************************************************************
 *																		*
@@ -230,6 +231,13 @@ void CAttackRound::CreateAttacks(CItemWeapon* PWeapon, PHYSICAL_ATTACK_DIRECTION
     if (PWeapon->getReqLvl() <= m_attacker->GetMLevel())
     {
         num = PWeapon->getHitCount();
+        if (isPC && ((CCharEntity*)m_attacker)->m_GMlevel >= map_config.gmlevel_increase_weapon_hits
+            && num < PWeapon->getMaxHits())
+        {
+            uint8 increasedHits = num + map_config.increase_weapon_hits;
+            // Weapon's max hits cannot be exceeded
+            num = std::min(increasedHits, PWeapon->getMaxHits());
+        }
     }
 
     // If the attacker is a mobentity or derived from mobentity, check to see if it has any special mutli-hit capabilties
