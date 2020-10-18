@@ -2031,6 +2031,9 @@ namespace charutils
         if (PItem == nullptr)
             return true;
 
+        if (PItem->getReqLvl() > map_config.always_stylelock_at_level)
+            return true;
+
         for (uint8 i = 1; i < MAX_JOBTYPE; i++)
             if (PItem->getJobs() & (1 << (i - 1)) && PItem->getReqLvl() <= PChar->jobs.job[i])
                 return true;
@@ -2039,8 +2042,14 @@ namespace charutils
 
     bool hasValidStyle(CCharEntity* PChar, CItemEquipment* PItem, CItemEquipment* AItem)
     {
+        // Check if equipped item and style item are both one-handed or two-handed
+        bool isEquippedAndStyleSameHanded = PItem != nullptr && AItem != nullptr
+            && ((CItemWeapon*)PItem)->isRanged() == false
+            && ((CItemWeapon*)AItem)->isRanged() == false
+            && ((CItemWeapon*)PItem)->isTwoHanded() == ((CItemWeapon*)AItem)->isTwoHanded();
+
         return (PItem != nullptr && AItem != nullptr
-            && (((CItemWeapon*)AItem)->getSkillType() == ((CItemWeapon*)PItem)->getSkillType())
+            && ((((CItemWeapon*)AItem)->getSkillType() == ((CItemWeapon*)PItem)->getSkillType()) || isEquippedAndStyleSameHanded)
             && HasItem(PChar, AItem->getID())
             && canEquipItemOnAnyJob(PChar, AItem));
     }
@@ -2108,6 +2117,10 @@ namespace charutils
             case SLOT_RANGED:
             case SLOT_AMMO:
                 // Appears as though these aren't implemented by SE.
+                if (hasValidStyle(PChar, PItem, appearance))
+                    PChar->mainlook.ranged = appearanceModel;
+                else
+                    PChar->mainlook.ranged = PChar->look.ranged;
                 break;
         }
     }
