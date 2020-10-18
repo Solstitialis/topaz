@@ -164,6 +164,7 @@ struct map_config_t
     bool   skillup_bloodpact;         // Enable/disable skillups for bloodpacts
     bool   anticheat_enabled;         // Is the anti-cheating system enabled
     bool   anticheat_jail_disable;    // Globally disable auto-jailing by the anti-cheat system
+    uint8  always_stylelock_at_level; // Always allow items at or above the specified level to be stylelocked
     int8   gmlevel_infinite_ammo;     // Minimum GM level where ranged attack does not consume ammo
     int8   gmlevel_omit_nin_tool;     // Minimum GM level where ninja tools are not required
     int8   gmlevel_equip_no_tp_loss;  // Minimum GM level where changing equipment does not reset TP or remove Aftermath
