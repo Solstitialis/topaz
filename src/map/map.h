@@ -169,6 +169,7 @@ struct map_config_t
     int8   gmlevel_infinite_ammo;           // Minimum GM level where ranged attack does not consume ammo
     int8   gmlevel_omit_nin_tool;           // Minimum GM level where ninja tools are not required
     int8   gmlevel_equip_no_tp_loss;        // Minimum GM level where changing equipment does not reset TP or remove Aftermath
+    int8   gmlevel_no_damage_reduction_cap; // Minimum GM level where damage reduction cap is increased from 50% to 100%
     int8   gmlevel_weapon_skill_cap_rank;   // Min GM level where weapon skill cap is increased
     int8   gmlevel_defense_skill_cap_rank;  // Minimum GM level where defense skill cap is increased
     int8   gmlevel_magic_skill_cap_rank;    // Minimum GM level where magic skill cap is increased
