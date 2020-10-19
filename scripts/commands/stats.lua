@@ -95,4 +95,8 @@ function onTrigger(player)
     message = message .. string.format("Phalanx I: %s   Phalanx II: %s\n", phalanx, phalanx2);
     message = message .. string.format("Stoneskin: %s\n", stoneskin);
     player:PrintToPlayer(message);
+
+    message = "";
+    message = message .. string.format("Spell Interruption Rate: %s%%\n", player:getMod(tpz.mod.SPELLINTERRUPT));
+    player:PrintToPlayer(message);
 end
