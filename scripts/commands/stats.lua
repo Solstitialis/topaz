@@ -86,7 +86,7 @@ function onTrigger(player)
     player:PrintToPlayer(message);
     
     message = "";
-    message = message .. string.format("Damage Taken%%: %s\n", player:getMod(tpz.mod.DMG));
+    message = message .. string.format("Damage Taken Mod: %s\n", player:getMod(tpz.mod.DMG));
     message = message .. string.format("Phy Dmg Taken (#/1000): %s   Mag Dmg Taken (#/1000): %s\n", player:physicalDmgTaken(1000), player:magicDmgTaken(1000));
     message = message .. string.format("Rng Dmg Taken (#/1000): %s   Breath Dmg Taken (#/1000): %s\n", player:rangedDmgTaken(1000), player:breathDmgTaken(1000));
     player:PrintToPlayer(message);

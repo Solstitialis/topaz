@@ -4287,7 +4287,16 @@ namespace battleutils
 
         resist = 1.0f + ( floor( 256.0f * ( PDefender->getMod(Mod::DMGBREATH) / 100.0f ) ) / 256.0f )
                       + ( floor( 256.0f * ( PDefender->getMod(Mod::DMG)       / 100.0f ) ) / 256.0f );
-        resist = std::clamp(resist, 0.5f, 1.5f); //assuming if its floored at .5f its capped at 1.5f but who's stacking +dmgtaken equip anyway???
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_no_damage_reduction_cap)
+        {
+            // don't cap to 50%, but at least take 0% damage
+            resist = std::max(resist, 0.f);
+        }
+        else
+        {
+            resist = std::clamp(resist, 0.5f, 1.5f); //assuming if its floored at .5f its capped at 1.5f but who's stacking +dmgtaken equip anyway???
+        }
+
         damage = (int32)(damage * resist);
 
         if (tpzrand::GetRandomNumber(100) < PDefender->getMod(Mod::ABSORB_DMG_CHANCE))
@@ -4313,9 +4322,27 @@ namespace battleutils
         damage = (int32)(damage * resist);
 
         resist = 1.f + PDefender->getMod(Mod::DMGMAGIC) / 100.f + PDefender->getMod(Mod::DMG) / 100.f;
-        resist = std::max(resist, 0.5f);
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_no_damage_reduction_cap)
+        {
+            // don't cap to 50%, but at least take 0% damage
+            resist = std::max(resist, 0.f);
+        }
+        else
+        {
+            resist = std::max(resist, 0.5f);
+        }
+
         resist += PDefender->getMod(Mod::DMGMAGIC_II) / 100.f;
-        resist = std::max(resist, 0.125f); // Total cap with MDT-% II included is 87.5%
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_no_damage_reduction_cap)
+        {
+            // don't cap to 50%, but at least take 0% damage in case GM level dmg reduction + Aegis reduces to less than 0
+            resist = std::max(resist, 0.f);
+        }
+        else
+        {
+            resist = std::max(resist, 0.125f); // Total cap with MDT-% II included is 87.5%
+        }
+
         damage = (int32)(damage * resist);
 
         if (damage > 0 && PDefender->objtype == TYPE_PET && PDefender->getMod(Mod::AUTO_STEAM_JACKET) > 1)
@@ -4347,8 +4374,18 @@ namespace battleutils
         damage = (int32)(damage * resist);
 
         resist = 1.f + PDefender->getMod(Mod::DMGPHYS) / 100.f + PDefender->getMod(Mod::DMG) / 100.f;
-        resist = std::max(resist, 0.5f); // PDT caps at -50%
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_no_damage_reduction_cap)
+        {
+            // don't cap to 50%, but at least take 0% damage
+            resist = std::max(resist, 0.f);
+        }
+        else
+        {
+            resist = std::max(resist, 0.5f); // PDT caps at -50%
+        }        
+
         resist += PDefender->getMod(Mod::DMGPHYS_II) / 100.f; // Add Burtgang reduction after 50% cap. Extends cap to -68%
+        resist = std::max(resist, 0.f); // At least take 0% damage in case GM level dmg reduction + Burtgang reduces to less than 0
         damage = (int32)(damage * resist);
 
         if (damage > 0 && PDefender->objtype == TYPE_PET && PDefender->getMod(Mod::AUTO_STEAM_JACKET) > 0)
@@ -4381,7 +4418,16 @@ namespace battleutils
         damage = (int32)(damage * resist);
 
         resist = 1.0f + PDefender->getMod(Mod::DMGRANGE) / 100.f + PDefender->getMod(Mod::DMG) / 100.f;
-        resist = std::max(resist, 0.5f);
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_no_damage_reduction_cap)
+        {
+            // don't cap to 50%, but at least take 0% damage
+            resist = std::max(resist, 0.f);
+        }
+        else
+        {
+            resist = std::max(resist, 0.5f);
+        }
+
         damage = (int32)(damage * resist);
 
         if (damage > 0 && PDefender->objtype == TYPE_PET && PDefender->getMod(Mod::AUTO_STEAM_JACKET) > 0)
