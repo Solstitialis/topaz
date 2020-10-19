@@ -1068,6 +1068,7 @@ int32 map_config_default()
     map_config.anticheat_enabled = false;
     map_config.anticheat_jail_disable = false;
     map_config.always_stylelock_at_level = 100;
+    map_config.gmlevel_show_augments = 5;
     map_config.gmlevel_infinite_ammo = 5;
     map_config.gmlevel_omit_nin_tool = 5;
     map_config.gmlevel_equip_no_tp_loss = 5;
@@ -1082,8 +1083,7 @@ int32 map_config_default()
     map_config.magic_skill_cap_rank = 1;
     map_config.conserve_mp_multiplier = 1.0f;
     map_config.spell_interrupt_down = 0;
-    map_config.increase_weapon_hits = 0;
-    map_config.gmlevel_show_augments = 5;
+    map_config.increase_weapon_hits = 0;    
     return 0;
 }
 
@@ -1123,6 +1123,9 @@ int32 map_config_read(const int8* cfgName)
         while (--ptr >= w2 && *ptr == ' ');
         ptr++;
         *ptr = '\0';
+
+        // Workaround for "complier limit: blocks nested too deeply" error (too many if/else if statements)
+        bool isDefaultSetting = true;
 
         if (strcmpi(w1, "timestamp_format") == 0)
         {
@@ -1545,73 +1548,84 @@ int32 map_config_read(const int8* cfgName)
         {
             map_config.always_stylelock_at_level = atoi(w2);
         }
-        else if (strcmp(w1, "gmlevel_infinite_ammo") == 0)
-        {
-            map_config.gmlevel_infinite_ammo = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_omit_nin_tool") == 0)
-        {
-            map_config.gmlevel_omit_nin_tool = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_equip_no_tp_loss") == 0)
-        {
-            map_config.gmlevel_equip_no_tp_loss = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_weapon_skill_cap_rank") == 0)
-        {
-            map_config.gmlevel_weapon_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_defense_skill_cap_rank") == 0)
-        {
-            map_config.gmlevel_defense_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_magic_skill_cap_rank") == 0)
-        {
-            map_config.gmlevel_magic_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_conserve_mp") == 0)
-        {
-            map_config.gmlevel_conserve_mp = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_spell_interrupt_down") == 0)
-        {
-            map_config.gmlevel_spell_interrupt_down = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_increase_weapon_hits") == 0)
-        {
-            map_config.gmlevel_increase_weapon_hits = atoi(w2);
-        }
-        else if (strcmp(w1, "weapon_skill_cap_rank") == 0)
-        {
-            map_config.weapon_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "defense_skill_cap_rank") == 0)
-        {
-            map_config.defense_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "magic_skill_cap_rank") == 0)
-        {
-            map_config.magic_skill_cap_rank = atoi(w2);
-        }
-        else if (strcmp(w1, "conserve_mp_multiplier") == 0)
-        {
-            map_config.conserve_mp_multiplier = (float)atof(w2);
-        }
-        else if (strcmp(w1, "spell_interrupt_down") == 0)
-        {
-            map_config.spell_interrupt_down = atoi(w2);
-        }
-        else if (strcmp(w1, "increase_weapon_hits") == 0)
-        {
-            map_config.increase_weapon_hits = atoi(w2);
-        }
-        else if (strcmp(w1, "gmlevel_show_augments") == 0)
-        {
-            map_config.gmlevel_show_augments = atoi(w2);
-        }
         else
         {
-            ShowWarning(CL_YELLOW"Unknown setting '%s' in file %s\n" CL_RESET, w1, cfgName);
+            isDefaultSetting = false;
+        }
+
+        // Workaround for "complier limit: blocks nested too deeply" error (too many if/else if statements)
+        if (isDefaultSetting == false)
+        {
+            // Not a default setting, so check custom GM settings
+            if (strcmp(w1, "gmlevel_show_augments") == 0)
+            {
+                map_config.gmlevel_show_augments = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_infinite_ammo") == 0)
+            {
+                map_config.gmlevel_infinite_ammo = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_omit_nin_tool") == 0)
+            {
+                map_config.gmlevel_omit_nin_tool = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_equip_no_tp_loss") == 0)
+            {
+                map_config.gmlevel_equip_no_tp_loss = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_weapon_skill_cap_rank") == 0)
+            {
+                map_config.gmlevel_weapon_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_defense_skill_cap_rank") == 0)
+            {
+                map_config.gmlevel_defense_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_magic_skill_cap_rank") == 0)
+            {
+                map_config.gmlevel_magic_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_conserve_mp") == 0)
+            {
+                map_config.gmlevel_conserve_mp = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_spell_interrupt_down") == 0)
+            {
+                map_config.gmlevel_spell_interrupt_down = atoi(w2);
+            }
+            else if (strcmp(w1, "gmlevel_increase_weapon_hits") == 0)
+            {
+                map_config.gmlevel_increase_weapon_hits = atoi(w2);
+            }
+            else if (strcmp(w1, "weapon_skill_cap_rank") == 0)
+            {
+                map_config.weapon_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "defense_skill_cap_rank") == 0)
+            {
+                map_config.defense_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "magic_skill_cap_rank") == 0)
+            {
+                map_config.magic_skill_cap_rank = atoi(w2);
+            }
+            else if (strcmp(w1, "conserve_mp_multiplier") == 0)
+            {
+                map_config.conserve_mp_multiplier = (float)atof(w2);
+            }
+            else if (strcmp(w1, "spell_interrupt_down") == 0)
+            {
+                map_config.spell_interrupt_down = atoi(w2);
+            }
+            else if (strcmp(w1, "increase_weapon_hits") == 0)
+            {
+                map_config.increase_weapon_hits = atoi(w2);
+            }            
+            else
+            {
+                // Not a default setting, and not a custom GM setting, so show warning message
+                ShowWarning(CL_YELLOW "Unknown setting '%s' in file %s\n" CL_RESET, w1, cfgName);
+            }
         }
     }
 
