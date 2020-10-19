@@ -165,22 +165,23 @@ struct map_config_t
     bool   anticheat_enabled;         // Is the anti-cheating system enabled
     bool   anticheat_jail_disable;    // Globally disable auto-jailing by the anti-cheat system
     uint8  always_stylelock_at_level; // Always allow items at or above the specified level to be stylelocked
-    int8   gmlevel_infinite_ammo;     // Minimum GM level where ranged attack does not consume ammo
-    int8   gmlevel_omit_nin_tool;     // Minimum GM level where ninja tools are not required
-    int8   gmlevel_equip_no_tp_loss;  // Minimum GM level where changing equipment does not reset TP or remove Aftermath
-    int8   gmlevel_weapon_skill_cap_rank;  // Min GM level where weapon skill cap is increased
-    int8   gmlevel_defense_skill_cap_rank; // Minimum GM level where defense skill cap is increased
-    int8   gmlevel_magic_skill_cap_rank;   // Minimum GM level where magic skill cap is increased
-    int8   gmlevel_conserve_mp;       // Minimum GM level where conserve mp is more potent
-    int8   gmlevel_spell_interrupt_down; // Minimum GM level where bonus spell interruption rate down is applied
-    int8   gmlevel_increase_weapon_hits; // Minimum GM level where multihit weapons get extra hits
-    uint8  weapon_skill_cap_rank;     // Change skill cap rank. Will not allow r0 to be changed.
-    uint8  defense_skill_cap_rank;    // Change skill cap rank. Will not allow r0 to be changed.
-    uint8  magic_skill_cap_rank;      // Change skill cap rank. Will not allow r0 to be changed.
-    float  conserve_mp_multiplier;    // Increase effect of conserve mp (i.e. 0.75 on a 8/16 proc means mp cost of 6/16)
-    uint8  spell_interrupt_down;         // Apply bonus spell interruption rate down (i.e. 75 means 75% spell interruption rate down)
-    uint8  increase_weapon_hits;         // Number of extra hits for a multihit weapon (Weapon's max hits cannot be exceeded. Value of 1 means Kraken Club will do 3 to 8 hits.)
-    int8   gmlevel_show_augments;     // Minimum GM level where examine will show item augments
+    int8   gmlevel_show_augments;           // Minimum GM level where examine will show item augments
+    int8   gmlevel_infinite_ammo;           // Minimum GM level where ranged attack does not consume ammo
+    int8   gmlevel_omit_nin_tool;           // Minimum GM level where ninja tools are not required
+    int8   gmlevel_equip_no_tp_loss;        // Minimum GM level where changing equipment does not reset TP or remove Aftermath
+    int8   gmlevel_weapon_skill_cap_rank;   // Min GM level where weapon skill cap is increased
+    int8   gmlevel_defense_skill_cap_rank;  // Minimum GM level where defense skill cap is increased
+    int8   gmlevel_magic_skill_cap_rank;    // Minimum GM level where magic skill cap is increased
+    int8   gmlevel_conserve_mp;             // Minimum GM level where conserve mp is more potent
+    int8   gmlevel_spell_interrupt_down;    // Minimum GM level where bonus spell interruption rate down is applied
+    int8   gmlevel_increase_weapon_hits;    // Minimum GM level where multihit weapons get extra hits
+    uint8  weapon_skill_cap_rank;           // Change skill cap rank. Will not allow r0 to be changed.
+    uint8  defense_skill_cap_rank;          // Change skill cap rank. Will not allow r0 to be changed.
+    uint8  magic_skill_cap_rank;            // Change skill cap rank. Will not allow r0 to be changed.
+    float  conserve_mp_multiplier;          // Increase effect of conserve mp (i.e. 0.75 on a 8/16 proc means mp cost of 6/16)
+    uint8  spell_interrupt_down;            // Apply bonus spell interruption rate down (i.e. 75 means 75% spell interruption rate down)
+    uint8  increase_weapon_hits;            // Number of extra hits for a multihit weapon (Weapon's max hits cannot be exceeded. Value of 1 means Kraken Club will do 3 to 8 hits.)
+    
 };
 
 /************************************************************************
