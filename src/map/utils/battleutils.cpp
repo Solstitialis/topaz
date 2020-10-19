@@ -1637,15 +1637,16 @@ namespace battleutils
             //apply any merit reduction
             meritReduction = ((CCharEntity*)PDefender)->PMeritPoints->GetMeritValue(MERIT_SPELL_INTERUPTION_RATE, (CCharEntity*)PDefender);
         }
-
-        float interruptRate = ((float)((100.0f - (meritReduction + (float)PDefender->getMod(Mod::SPELLINTERRUPT))) / 100.0f));
-        check *= interruptRate;
-
-        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_decrease_spell_interrupt)
+        
+        uint8 gmBonusSpellInterrupt = 0;
+        if (PDefender->objtype == TYPE_PC && ((CCharEntity*)PDefender)->m_GMlevel >= map_config.gmlevel_spell_interrupt_down)
         {
-            check *= map_config.decrease_spell_interrupt_multiplier;
+            // Apply GM bonus spell interruption rate percentage down
+            gmBonusSpellInterrupt = map_config.spell_interrupt_down;
         }
 
+        float interruptRate = ((float)((100.0f - (meritReduction + (float)PDefender->getMod(Mod::SPELLINTERRUPT) + gmBonusSpellInterrupt)) / 100.0f));
+        check *= interruptRate;
         uint8 chance = tpzrand::GetRandomNumber(100);
 
         // caps, always give a 1% chance of interrupt
