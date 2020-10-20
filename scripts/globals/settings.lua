@@ -167,4 +167,7 @@ FORCE_SPAWN_QM_RESET_TIME = 300 -- Number of seconds the ??? remains hidden for 
 
 -- GM Level Buffs
 GMLEVEL_ADDITEM_AUGMENT_ALLOWED = 4 -- Min GM level where additem.lua allows augments
-GMLEVEL_GIVEITEM_AUGMENT_ALLOWED = 4 --Min GM level where giveitem.lua allows augments
+GMLEVEL_GIVEITEM_AUGMENT_ALLOWED = 4 -- Min GM level where giveitem.lua allows augments
+GMLEVEL_UTSUSEMI_ICHI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ichi gives extra shadow
+GMLEVEL_UTSUSEMI_NI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ni gives extra shadow
+GMLEVEL_UTSUSEMI_SAN_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi San gives extra shadow
