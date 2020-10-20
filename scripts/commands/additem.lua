@@ -31,7 +31,7 @@ function onTrigger(player, itemId, quantity, aug0, aug0val, aug1, aug1val, aug2,
     end
 
     -- Give the GM the item...
-    if (player:getGMLevel() >= 4) then
+    if (player:getGMLevel() >= GMLEVEL_ADDITEM_AUGMENT_ALLOWED) then
         player:addItem( itemId, quantity, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val, trialId )
         if (aug0 ~= nil) then
             player:PrintToPlayer( "Augmented Add Item Command." );
