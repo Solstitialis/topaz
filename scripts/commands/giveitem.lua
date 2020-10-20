@@ -29,7 +29,7 @@ function onTrigger(player, target, itemId, amount, aug0, aug0val, aug1, aug1val,
         targ:messageSpecial( ID.text.ITEM_CANNOT_BE_OBTAINED, itemId )
         player:PrintToPlayer( string.format( "Player '%s' does not have free space for that item!", target ) )
     else
-        if (player:getGMLevel() >= 4) then
+        if (player:getGMLevel() >= GMLEVEL_GIVEITEM_AUGMENT_ALLOWED) then
             targ:addItem( itemId, amount, aug0, aug0val, aug1, aug1val, aug2, aug2val, aug3, aug3val )
             player:PrintToPlayer( "Augmented Give Item Command." );
         else

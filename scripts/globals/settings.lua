@@ -164,3 +164,7 @@ DIG_GRANT_BURROW = 0 -- Set to 1 to grant burrow ability
 DIG_GRANT_BORE = 0 -- Set to 1 to grant bore ability
 ENM_COOLDOWN = 0  -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
 FORCE_SPAWN_QM_RESET_TIME = 300 -- Number of seconds the ??? remains hidden for after the despawning of the mob it force spawns.
+
+-- GM Level Buffs
+GMLEVEL_ADDITEM_AUGMENT_ALLOWED = 4 -- Min GM level where additem.lua allows augments
+GMLEVEL_GIVEITEM_AUGMENT_ALLOWED = 4 --Min GM level where giveitem.lua allows augments
