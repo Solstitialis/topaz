@@ -176,13 +176,15 @@ struct map_config_t
     int8   gmlevel_conserve_mp;             // Minimum GM level where conserve mp is more potent
     int8   gmlevel_spell_interrupt_down;    // Minimum GM level where bonus spell interruption rate down is applied
     int8   gmlevel_increase_weapon_hits;    // Minimum GM level where multihit weapons get extra hits
+    int8   gmlevel_enmity_cap;              // Minimum GM level where modified lower and upper enmity bonus caps are applied
     uint8  weapon_skill_cap_rank;           // Change skill cap rank. Will not allow r0 to be changed.
     uint8  defense_skill_cap_rank;          // Change skill cap rank. Will not allow r0 to be changed.
     uint8  magic_skill_cap_rank;            // Change skill cap rank. Will not allow r0 to be changed.
     float  conserve_mp_multiplier;          // Increase effect of conserve mp (i.e. 0.75 on a 8/16 proc means mp cost of 6/16)
     uint8  spell_interrupt_down;            // Apply bonus spell interruption rate down (i.e. 75 means 75% spell interruption rate down)
     uint8  increase_weapon_hits;            // Number of extra hits for a multihit weapon (Weapon's max hits cannot be exceeded. Value of 1 means Kraken Club will do 3 to 8 hits.)
-    
+    int16  enmity_cap_lower;                // Lower enmity bonus cap (Do not set lower cap to less than -99 to ensure min 1% enmity. Retail is -50.)
+    int16  enmity_cap_upper;                // Upper enmity bonus cap (Retail is 100)
 };
 
 /************************************************************************
