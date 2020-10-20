@@ -125,7 +125,16 @@ float CEnmityContainer::CalculateEnmityBonus(CBattleEntity* PEntity)
         }
     }
 
-    float bonus = (100.f + std::clamp(enmityBonus, -50, 100)) / 100.f;
+    float bonus = 0.0f;
+    if (PEntity->objtype == TYPE_PC && ((CCharEntity*)PEntity)->m_GMlevel >= map_config.gmlevel_enmity_cap)
+    {
+        // Modify lower and upper enmity bonus caps
+        bonus = (100.f + std::clamp(enmityBonus, (int)map_config.enmity_cap_lower, (int)map_config.enmity_cap_upper)) / 100.f;
+    }
+    else
+    {
+        bonus = (100.f + std::clamp(enmityBonus, -50, 100)) / 100.f;
+    }
 
     return bonus;
 }
