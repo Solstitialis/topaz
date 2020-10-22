@@ -31,6 +31,12 @@ function onTrigger(player)
         phalanx2 = math.floor((enhskill - 300.5) / 28.5) + 28
     end
 
+    -- Apply Phalanx resistance multiplier at GM level
+    if player:getObjType() == tpz.objType.PC and player:getGMLevel() >= GMLEVEL_PHALANX_MULTIPLIER then
+        phalanx = phalanx * PHALANX_MULTIPLIER
+        phalanx2 = phalanx2 * PHALANX_MULTIPLIER
+    end
+
     -- Stoneskin (copied from stoneskin.lua)
     local pMod = player:getSkillLevel(tpz.skill.ENHANCING_MAGIC) / 3 + player:getStat(tpz.mod.MND)
     local pAbs = 0
@@ -49,10 +55,8 @@ function onTrigger(player)
 
     local stoneskin = pAbs + pEquipMods
 
-    -- Buff for GMlevel >= 5
+    -- Apply Stoneskin damage absorption multiplier at GM level
     if(player:getObjType() == tpz.objType.PC and player:getGMLevel() >= GMLEVEL_STONESKIN_ABSORB_MULTIPLIER) then
-        phalanx = phalanx * 2;
-        phalanx2 = phalanx2 *2;
         stoneskin = stoneskin *STONESKIN_ABSORB_MULTIPLIER;
     end
 
