@@ -10,30 +10,26 @@ cmdprops =
 };
 
 function onTrigger(player)
-    -- Phalanx
+    -- Phalanx (copied from phalanx.lua)
     local enhskill = player:getSkillLevel(tpz.skill.ENHANCING_MAGIC)
     local phalanx = 0
     if enhskill <= 300 then
-        phalanx = math.max(enhskill / 10 - 2, 0)
-    elseif enhskill > 300 then
-        phalanx = (enhskill - 300) / 29 + 28
+        phalanx = math.max(math.floor(enhskill / 10) - 2, 0)
     else
-        print("Warning: Unknown enhancing magic skill for phalanx.")
+        phalanx = math.floor((enhskill - 300.5) / 28.5) + 28
     end
 
     -- Cap at 35
     phalanx = math.min(phalanx, 35)
 
-    -- Phalanx II
+    -- Phalanx II (copied from phalanx_ii.lua)
     local phalanx2 = 0
-    local phalanxMerits = player:getMerit(tpz.merit.PHALANX_II)
-    -- Buff for GMlevel >= 5    
-    if(player:getObjType() == tpz.objType.PC and player:getGMLevel() >= 5) then
-        --local before = phalanxMerits;
-        phalanxMerits = 15;
-        --player:PrintToPlayer( string.format( "Phalanx II (Before,After): %s,%s", before, phalanxMerits ) )
+
+    if enhskill <= 300 then
+        phalanx2 = math.floor(enhskill / 25) + 16
+    else
+        phalanx2 = math.floor((enhskill - 300.5) / 28.5) + 28
     end
-    phalanx2 = enhskill / 25 + phalanxMerits + 1
 
     -- Stoneskin (copied from stoneskin.lua)
     local pMod = player:getSkillLevel(tpz.skill.ENHANCING_MAGIC) / 3 + player:getStat(tpz.mod.MND)
