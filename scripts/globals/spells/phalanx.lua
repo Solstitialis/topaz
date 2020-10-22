@@ -13,7 +13,7 @@ end
 function onSpellCast(caster, target, spell)
     local enhskill = caster:getSkillLevel(tpz.skill.ENHANCING_MAGIC)
     local final = 0
-    local duration = calculateDuration(180, spell:getSkillType(), spell:getSpellGroup(), caster, target)
+    local duration = calculateDuration(PHALANX_I_DURATION, spell:getSkillType(), spell:getSpellGroup(), caster, target)
     duration = calculateDurationForLvl(duration, 33, target:getMainLvl())
 
     if enhskill <= 300 then
@@ -24,6 +24,13 @@ function onSpellCast(caster, target, spell)
 
     -- Cap at 35
     final = math.min(final, 35)
+
+    -- Apply resistance multiplier at GM level
+    --local before = final
+    if(caster:getObjType() == tpz.objType.PC and caster:getGMLevel() >= GMLEVEL_PHALANX_MULTIPLIER and target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_PHALANX_MULTIPLIER) then
+        final = final * PHALANX_MULTIPLIER
+    end
+    --caster:PrintToPlayer(string.format("Phalanx (Before,After): %s,%s", before, final))
 
     if target:addStatusEffect(tpz.effect.PHALANX, final, 0, duration) then
         spell:setMsg(tpz.msg.basic.MAGIC_GAIN_EFFECT)
