@@ -999,6 +999,10 @@ namespace charutils
             CItemLinkshell* PLinkshell2 = nullptr;
             bool hasMainWeapon = false;
 
+            bool subLoadedBeforeMain = false; // Flag for sub loaded before main
+            uint8 subSlotID = 0; // Backup value of sub Slot ID
+            uint8 subContainerID = 0; // Backup value of sub Container ID
+
             while (Sql_NextRow(SqlHandle) == SQL_SUCCESS)
             {
                 if (Sql_GetUIntData(SqlHandle, 1) < 16)
@@ -1008,7 +1012,18 @@ namespace charutils
                         hasMainWeapon = true;
                     }
 
-                    EquipItem(PChar, Sql_GetUIntData(SqlHandle, 0), Sql_GetUIntData(SqlHandle, 1), Sql_GetUIntData(SqlHandle, 2));
+                    if (hasMainWeapon == false && Sql_GetUIntData(SqlHandle, 1) == SLOT_SUB)
+                    {
+                        // Sub loaded before main, so backup data and do not equip sub for now
+                        subLoadedBeforeMain = true;
+                        subSlotID = Sql_GetUIntData(SqlHandle, 0);
+                        subContainerID = Sql_GetUIntData(SqlHandle, 2);
+                    }
+                    else
+                    {
+                        // Equip item if it is not a sub that loaded before main
+                        EquipItem(PChar, Sql_GetUIntData(SqlHandle, 0), Sql_GetUIntData(SqlHandle, 1), Sql_GetUIntData(SqlHandle, 2));
+                    }
                 }
                 else
                 {
@@ -1030,6 +1045,13 @@ namespace charutils
                         }
                     }
                 }
+            }
+
+            if (subLoadedBeforeMain == true)
+            {
+                // If sub loaded before main, try to to load sub again
+                // Will also occur if only a sub was equipped without main (i.e. shield only)
+                EquipItem(PChar, subSlotID, SLOT_SUB, subContainerID);
             }
 
             // If no weapon is equipped, equip the appropriate unarmed weapon item
