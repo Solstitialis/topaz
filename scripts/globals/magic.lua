@@ -123,7 +123,7 @@ function doBoostGain(caster, target, spell, effect)
 end
 
 function doEnspell(caster, target, spell, effect)
-    local duration = calculateDuration(180, spell:getSkillType(), spell:getSpellGroup(), caster, target)
+    local duration = calculateDuration(ENSPELL_DURATION, spell:getSkillType(), spell:getSpellGroup(), caster, target)
 
     --calculate potency
     local magicskill = target:getSkillLevel(tpz.skill.ENHANCING_MAGIC)
@@ -132,6 +132,13 @@ function doEnspell(caster, target, spell, effect)
     if magicskill > 200 then
         potency = 5 + math.floor(5 * magicskill / 100)
     end
+
+    -- Apply damage multiplier at GM level
+    --local before = potency
+    if(caster:getObjType() == tpz.objType.PC and caster:getGMLevel() >= GMLEVEL_ENSPELL_MULTIPLIER and target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_ENSPELL_MULTIPLIER) then
+        potency = potency * ENSPELL_MULTIPLIER
+    end
+    --caster:PrintToPlayer(string.format("Enspell (Before,After): %s,%s", before, potency))
 
     if target:addStatusEffect(effect, potency, 0, duration) then
         spell:setMsg(tpz.msg.basic.MAGIC_GAIN_EFFECT)
