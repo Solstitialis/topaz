@@ -123,6 +123,7 @@ FrigiciteDuration = 30 -- When OldSChoolG2 is enabled, this is the time (in seco
 DIA_OVERWRITE = 1 --Set to 1 to allow Bio to overwrite same tier Dia.  Default is 1.
 BIO_OVERWRITE = 0 --Set to 1 to allow Dia to overwrite same tier Bio.  Default is 0.
 STONESKIN_CAP = 350 -- soft cap for hp absorbed by stoneskin
+STONESKIN_DURATION = 1800 -- Stoneskin duration (Retain is 300 or 5 min)
 BLINK_SHADOWS = 2   -- number of shadows supplied by Blink spell
 SPIKE_EFFECT_DURATION = 180 -- the duration of RDM, BLM spikes effects (not Reprisal)
 ELEMENTAL_DEBUFF_DURATION = 120 -- base duration of elemental debuffs
@@ -160,3 +161,6 @@ GMLEVEL_GIVEITEM_AUGMENT_ALLOWED = 4 -- Min GM level where giveitem.lua allows a
 GMLEVEL_UTSUSEMI_ICHI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ichi gives extra shadow
 GMLEVEL_UTSUSEMI_NI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ni gives extra shadow
 GMLEVEL_UTSUSEMI_SAN_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi San gives extra shadow
+GMLEVEL_STONESKIN_ABSORB_MULTIPLIER = 5 -- Min GM level where damage absorbed by Stoneskin is increased
+
+STONESKIN_ABSORB_MULTIPLIER = 2 -- Multiplier for damage absorbed by Stoneskin
