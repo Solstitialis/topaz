@@ -334,6 +334,22 @@ function applyResistanceEffect(caster, target, spell, params)
 
     local p = getMagicHitRate(caster, target, skill, element, percentBonus, magicaccbonus)
 
+    -- Apply enemy debuff hit rate multiplier at GM level
+    --local before = p
+    if(target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_ENEMY_DEBUFF_HIT_RATE_MULTIPLIER) then
+        local isElementalDebuff = spell:getID() >= 235 and spell:getID() <= 240
+        if (skill == tpz.skill.ENFEEBLING_MAGIC or
+                skill == tpz.skill.SINGING or
+                skill == tpz.skill.DARK_MAGIC or
+                skill == tpz.skill.NINJUTSU or
+                spell:getID() == 98 or
+                isElementalDebuff) then
+            -- Spell ID for Repose is 98
+            p = p * ENEMY_DEBUFF_HIT_RATE_MULTIPLIER
+        end
+    end
+    --target:PrintToPlayer(string.format("Enemy Debuff Hit Rate (Before,After): %s,%s", before, p));
+
     return getMagicResist(p)
 end
 
@@ -352,6 +368,7 @@ function applyResistanceAddEffect(player, target, element, bonus)
     return getMagicResist(p)
 end
 
+-- Chance of magic hit in percentage. Returns a number from 5 to 95. 
 function getMagicHitRate(caster, target, skillType, element, percentBonus, bonusAcc)
     -- resist everything if magic shield is active
     if (target:hasStatusEffect(tpz.effect.MAGIC_SHIELD, 0)) then
