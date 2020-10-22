@@ -124,6 +124,7 @@ DIA_OVERWRITE = 1 --Set to 1 to allow Bio to overwrite same tier Dia.  Default i
 BIO_OVERWRITE = 0 --Set to 1 to allow Dia to overwrite same tier Bio.  Default is 0.
 STONESKIN_CAP = 350 -- soft cap for hp absorbed by stoneskin
 STONESKIN_DURATION = 1800 -- Stoneskin duration (Retail is 300 or 5 min)
+ENSPELL_DURATION = 1800 -- Enspell duration (Retail is 180 or 3 min)
 BLINK_SHADOWS = 2   -- number of shadows supplied by Blink spell
 SPIKE_EFFECT_DURATION = 1800 -- the duration of RDM, BLM spikes effects (not Reprisal)
 ELEMENTAL_DEBUFF_DURATION = 120 -- base duration of elemental debuffs
@@ -162,5 +163,7 @@ GMLEVEL_UTSUSEMI_ICHI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ichi gives
 GMLEVEL_UTSUSEMI_NI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ni gives extra shadow
 GMLEVEL_UTSUSEMI_SAN_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi San gives extra shadow
 GMLEVEL_STONESKIN_ABSORB_MULTIPLIER = 5 -- Min GM level where damage absorbed by Stoneskin is increased
+GMLEVEL_ENSPELL_MULTIPLIER = 5 -- Min GM level where Enspell damage is increased
 
 STONESKIN_ABSORB_MULTIPLIER = 2 -- Multiplier for damage absorbed by Stoneskin
+ENSPELL_MULTIPLIER = 1.5 -- Multiplier for Enspell damage
