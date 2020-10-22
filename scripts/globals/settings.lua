@@ -178,7 +178,9 @@ GMLEVEL_UTSUSEMI_SAN_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi San gives e
 GMLEVEL_STONESKIN_ABSORB_MULTIPLIER = 5 -- Min GM level where damage absorbed by Stoneskin is increased
 GMLEVEL_PHALANX_MULTIPLIER = 5 -- Min GM level where Phalanx resistance is increased
 GMLEVEL_ENSPELL_MULTIPLIER = 5 -- Min GM level where Enspell damage is increased
+GMLEVEL_ENEMY_DEBUFF_HIT_RATE_MULTIPLIER = 5 -- Min GM level where enemy debuff hit rate is decreased
 
 STONESKIN_ABSORB_MULTIPLIER = 2 -- Multiplier for damage absorbed by Stoneskin
 PHALANX_MULTIPLIER = 2 -- Multiplier for Phalanx resistance
 ENSPELL_MULTIPLIER = 1.5 -- Multiplier for Enspell damage
+ENEMY_DEBUFF_HIT_RATE_MULTIPLIER = 0.5 -- Multiplier for enemy debuff hit rate (e.g. 0.75 means 25% less likely to hit)

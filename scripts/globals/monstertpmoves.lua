@@ -311,6 +311,13 @@ function applyPlayerResistance(mob, effect, target, diff, bonus, element)
 
     local p = getMagicHitRate(mob, target, 0, element, percentBonus, magicaccbonus)
 
+    -- Apply enemy debuff hit rate multiplier at GM level
+    --local before = p
+    if(target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_ENEMY_DEBUFF_HIT_RATE_MULTIPLIER) then
+        p = p * ENEMY_DEBUFF_HIT_RATE_MULTIPLIER
+    end
+    --target:PrintToPlayer(string.format("Enemy TP Move Hit Rate (Before,After): %s,%s", before, p));
+
     return getMagicResist(p)
 end
 
