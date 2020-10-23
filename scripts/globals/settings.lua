@@ -176,6 +176,7 @@ GMLEVEL_UTSUSEMI_ICHI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ichi gives
 GMLEVEL_UTSUSEMI_NI_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi Ni gives extra shadow
 GMLEVEL_UTSUSEMI_SAN_EXTRA_SHADOW = 5 -- Min GM level where Utsusemi San gives extra shadow
 GMLEVEL_NO_INSTANT_DEATH = 1 -- Min GM level where instant death spells and abilities have no effect
+GMLEVEL_NO_DOOM_KO = 1 -- Min GM level where expiring the Doom effect timer will not K.O. target
 GMLEVEL_STONESKIN_ABSORB_MULTIPLIER = 5 -- Min GM level where damage absorbed by Stoneskin is increased
 GMLEVEL_PHALANX_MULTIPLIER = 5 -- Min GM level where Phalanx resistance is increased
 GMLEVEL_ENSPELL_MULTIPLIER = 5 -- Min GM level where Enspell damage is increased

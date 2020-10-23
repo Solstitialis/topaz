@@ -19,7 +19,9 @@ function onEffectTick(target, effect)
 end
 
 function onEffectLose(target, effect)
-    if (effect:getTimeRemaining() == 0) then
+    if (target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_NO_DOOM_KO) then
+        -- No K.O. from Doom effect at GM level
+    elseif (effect:getTimeRemaining() == 0) then
         target:setHP(0)
     end
 end
