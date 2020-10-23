@@ -15,6 +15,10 @@ function onMobWeaponSkill(target, mob, skill)
     if target:hasStatusEffect(tpz.effect.MAGIC_SHIELD) or math.random(0, 99) < target:getMod(tpz.mod.DEATHRES) then
         skill:setMsg(tpz.msg.basic.SKILL_NO_EFFECT)
         return 0
+    elseif (target:getObjType() == tpz.objType.PC and target:getGMLevel() >= GMLEVEL_NO_INSTANT_DEATH) then
+        -- No instant death at GM level
+        skill:setMsg(tpz.msg.basic.SKILL_NO_EFFECT)
+        return 0
     end
 
     skill:setMsg(tpz.msg.basic.FALL_TO_GROUND)
