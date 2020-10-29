@@ -76,7 +76,16 @@ tpz.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
         local nm = GetMobByID(nmId)
         if nm ~= nil then
             local pop = nm:getLocalVar("pop")
-            
+
+            -- Check if NMs should always spawn immediately
+            -- LOTTERY_NM_IMMEDIATE_SPAWN == 0 will not set immediate to false
+            if LOTTERY_NM_IMMEDIATE_SPAWN == 1 then
+                immediate = true
+            end
+
+            -- Apply minimum chance of lottery NMs to spawn
+            chance = math.max(chance, LOTTERY_NM_MIN_CHANCE_TO_SPAWN)
+
             chance = math.ceil(chance * 10) -- chance / 1000.
             if os.time() > pop and not lotteryPrimed(phList) and math.random(1000) <= chance then
 
@@ -91,7 +100,8 @@ tpz.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
                     DisallowRespawn(nmId, true)
                     DisallowRespawn(phId, false)
                     GetMobByID(phId):setRespawnTime(GetMobRespawnTime(phId))
-                    m:setLocalVar("pop", os.time() + cooldown)
+                    -- Limit max cooldown for lottery NMs to be eligible to replace a placeholder mob
+                    m:setLocalVar("pop", os.time() + math.min(cooldown, LOTTERY_NM_MAX_SPAWN_COOLDOWN))
                     m:removeListener("DESPAWN_" .. nmId)
                 end)
 
