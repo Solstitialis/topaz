@@ -168,6 +168,9 @@ DIG_GRANT_BURROW = 0 -- Set to 1 to grant burrow ability
 DIG_GRANT_BORE = 0 -- Set to 1 to grant bore ability
 ENM_COOLDOWN = 0  -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
 FORCE_SPAWN_QM_RESET_TIME = 300 -- Number of seconds the ??? remains hidden for after the despawning of the mob it force spawns.
+LOTTERY_NM_MIN_CHANCE_TO_SPAWN = 100 -- Min chance(%) lottery NMs will spawn to replace a placeholder mob (e.g. 100 will always spawn)
+LOTTERY_NM_IMMEDIATE_SPAWN = 1 -- Set to 1 to always spawn NMs to replace a placeholder mob immediately (instead of the placeholder's respawn timer)
+LOTTERY_NM_MAX_SPAWN_COOLDOWN = 1800 -- Max cooldown(s) for lottery NMs to be eligible to replace a placeholder mob
 
 -- GM Level Buffs
 GMLEVEL_ADDITEM_AUGMENT_ALLOWED = 4 -- Min GM level where additem.lua allows augments

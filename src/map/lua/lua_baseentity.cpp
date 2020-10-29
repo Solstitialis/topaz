@@ -13609,7 +13609,14 @@ inline int32 CLuaBaseEntity::setRespawnTime(lua_State* L)
 
     if (!lua_isnil(L, 1) && lua_isnumber(L, 1))
     {
-        PMob->m_RespawnTime = (uint32)(lua_tointeger(L, 1) * 1000);
+        // Limit max time to spawn a mob
+        PMob->m_RespawnTime = std::min((uint32)lua_tointeger(L, 1), map_config.max_mob_respawn_time) * 1000;
+        /*ShowMessage("Name: %s\nSetRespawnTime: %s   max_mob_respawn_time: %s   Actual m_RespawnTime: %s\n"
+            , PMob->name
+            , (uint32)lua_tointeger(L, 1)
+            , map_config.max_mob_respawn_time
+            , PMob->m_RespawnTime);*/
+
         if (PMob->PAI->IsCurrentState<CRespawnState>())
         {
             PMob->PAI->GetCurrentState()->ResetEntryTime();
