@@ -359,6 +359,8 @@ void SmallPacket0x00C(map_session_data_t* session, CCharEntity* PChar, CBasicPac
             case PETTYPE_JUG_PET:
             case PETTYPE_WYVERN:
                 petutils::SpawnPet(PChar, PChar->petZoningInfo.petID, true);
+                // resetPetZoningInfo() only if pet was spawned in valid area
+                PChar->resetPetZoningInfo();
                 break;
 
             default:
@@ -366,8 +368,12 @@ void SmallPacket0x00C(map_session_data_t* session, CCharEntity* PChar, CBasicPac
             }
         }
     }
-    // reset the petZoning info
-    PChar->resetPetZoningInfo();
+    else
+    {
+        // resetPetZoningInfo() if petZoningInfo.respawnPet == false
+        // to ensure data is cleared
+        PChar->resetPetZoningInfo();
+    }
     return;
 }
 
