@@ -99,4 +99,9 @@ function onTrigger(player)
     message = message .. string.format("Spell Interruption Rate: %s%%\n", player:getMod(tpz.mod.SPELLINTERRUPT));
     message = message .. string.format("Shadows: %s\n", player:getMod(tpz.mod.UTSUSEMI));
     player:PrintToPlayer(message);
+
+    message = "";
+    message = message .. string.format("Song spellcasting time: -%s%%\n", player:getMod(tpz.mod.SONG_SPELLCASTING_TIME));
+    message = message .. string.format("Song recast delay: -%ss\n", player:getMod(tpz.mod.SONG_RECAST_DELAY));
+    player:PrintToPlayer(message);
 end

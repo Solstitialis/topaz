@@ -402,7 +402,7 @@ INSERT INTO `augments` VALUES (319, 0, 0, 0, 0, 0);
 
 INSERT INTO `augments` VALUES (320, 0, 357, -1, 0, 0); -- Blood Pact ability delay -1
 INSERT INTO `augments` VALUES (321, 0, 346, -1, 0, 0); -- Avatar perpetuation cost -1
-INSERT INTO `augments` VALUES (322, 0, 455, -1, 0, 0); -- Song spellcasting time -1%
+INSERT INTO `augments` VALUES (322, 0, 455, 1, 0, 0); -- Song spellcasting time -1%
 INSERT INTO `augments` VALUES (323, 0, 0, 0, 0, 0); -- Cure spellcasting time -1%
 INSERT INTO `augments` VALUES (324, 0, 0, 0, 0, 0); -- Call Beast ability delay -1
 INSERT INTO `augments` VALUES (325, 0, 0, 0, 0, 0); -- Quick Draw ability delay -1
@@ -417,7 +417,7 @@ INSERT INTO `augments` VALUES (333, 0, 0, 0, 0, 0); -- Conserve TP+1
 INSERT INTO `augments` VALUES (334, 0, 487, 1, 0, 0); -- Magic burst dmg.+1%
 INSERT INTO `augments` VALUES (335, 0, 542, 1, 0, 0); -- Mag. crit. hit dmg.+1%
 INSERT INTO `augments` VALUES (336, 0, 0, 0, 0, 0); -- Sic and Ready ability delay -1
-INSERT INTO `augments` VALUES (337, 0, 0, 0, 0, 0); -- Song recast delay -1
+INSERT INTO `augments` VALUES (337, 0, 833, 1, 0, 0); -- Song recast delay -1
 INSERT INTO `augments` VALUES (338, 0, 0, 0, 0, 0); -- Barrage+1 (additional shots, NOT acc)
 INSERT INTO `augments` VALUES (339, 0, 0, 0, 0, 0); -- Elemental Siphon+5 (value*5) Use Multiplier field.
 INSERT INTO `augments` VALUES (340, 0, 0, 0, 0, 0); -- Phantom Roll ability delay -1
