@@ -11689,12 +11689,13 @@ inline int32 CLuaBaseEntity::addBardSong(lua_State *L)
 
     CLuaBaseEntity* PEntity = Lunar<CLuaBaseEntity>::check(L, 1); //Caster
 
+    // Apply song_duration_multiplier
     CStatusEffect * PEffect = new CStatusEffect(
         (EFFECT)lua_tointeger(L, 2),  // Effect ID
         (uint16)lua_tointeger(L, 2),  // Effect Icon (Associated with ID)
         (uint16)lua_tointeger(L, 3),  // Power
         (uint16)lua_tointeger(L, 4),  // Tick
-        (uint16)lua_tointeger(L, 5),  // Duration
+        (uint16)(lua_tointeger(L, 5) * map_config.song_duration_multiplier),  // Duration
         (uint16)lua_tointeger(L, 6),  // SubID
         (uint16)lua_tointeger(L, 7),  // SubPower
         (uint16)lua_tointeger(L, 8)); // Tier
