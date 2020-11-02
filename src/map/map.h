@@ -166,6 +166,7 @@ struct map_config_t
     bool   anticheat_jail_disable;    // Globally disable auto-jailing by the anti-cheat system
     uint8  always_stylelock_at_level; // Always allow items at or above the specified level to be stylelocked
     uint32 max_mob_respawn_time;      // Max time(s) to spawn a mob, including normal and NMs (e.g. 1800 is 30 minutes max spawn time for all mobs)
+    float  song_duration_multiplier;  // Multiplies duration of songs (i.e 2 means song duration is doubled)
     int8   gmlevel_show_augments;           // Minimum GM level where examine will show item augments
     int8   gmlevel_infinite_ammo;           // Minimum GM level where ranged attack does not consume ammo
     int8   gmlevel_omit_nin_tool;           // Minimum GM level where ninja tools are not required
