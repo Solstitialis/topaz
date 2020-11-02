@@ -1069,6 +1069,7 @@ int32 map_config_default()
     map_config.anticheat_jail_disable = false;
     map_config.always_stylelock_at_level = 100;
     map_config.max_mob_respawn_time = 1000000;
+    map_config.song_duration_multiplier = 1.0f;
     map_config.gmlevel_show_augments = 5;
     map_config.gmlevel_infinite_ammo = 5;
     map_config.gmlevel_omit_nin_tool = 5;
@@ -1556,6 +1557,10 @@ int32 map_config_read(const int8* cfgName)
         else if (strcmp(w1, "max_mob_respawn_time") == 0)
         {
             map_config.max_mob_respawn_time = atoi(w2);
+        }
+        else if (strcmp(w1, "song_duration_multiplier") == 0)
+        {
+            map_config.song_duration_multiplier = (float)atof(w2);
         }
         else
         {
