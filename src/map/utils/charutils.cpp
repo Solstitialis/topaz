@@ -3698,7 +3698,7 @@ namespace charutils
                 {
                     if (PChar->PParty->GetSyncTarget() == PChar)
                     {
-                        PChar->PParty->RefreshSync();
+                        PChar->PParty->RefreshSync(true);
                     }
                     PChar->PParty->ReloadParty();
                 }
@@ -3878,9 +3878,14 @@ namespace charutils
 
                 if (PChar->PParty != nullptr)
                 {
-                    if (PChar->PParty->GetSyncTarget() == PChar)
+                    // Refresh sync if PChar is sync target, or
+                    // Refresh sync if PChar's current level is less than sync target's level
+                    CCharEntity* syncTarget = (CCharEntity*)PChar->PParty->GetSyncTarget();
+                    if (syncTarget == PChar
+                        || (syncTarget != nullptr && PChar->GetMLevel() < syncTarget->jobs.job[syncTarget->GetMJob()]))
                     {
-                        PChar->PParty->RefreshSync();
+                        // Show level sync notification in game PChar is sync target
+                        PChar->PParty->RefreshSync(syncTarget == PChar);
                     }
                     PChar->PParty->ReloadParty();
                 }
