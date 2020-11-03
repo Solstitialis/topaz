@@ -1112,7 +1112,11 @@ void CParty::DisableSync()
     ReloadParty();
 }
 
-void CParty::RefreshSync()
+/// <summary>
+/// Refresh party's level sync
+/// </summary>
+/// <param name="showSyncMessage">If true, show level sync notification in game.</param>
+void CParty::RefreshSync(bool showSyncMessage)
 {
     CCharEntity* sync = (CCharEntity*)m_PSyncTarget;
     uint8 syncLevel = sync->jobs.job[sync->GetMJob()];
@@ -1151,7 +1155,10 @@ void CParty::RefreshSync()
             charutils::CheckValidEquipment(member);
             member->pushPacket(new CCharAbilitiesPacket(member));
         }
-        member->pushPacket(new CMessageBasicPacket(member, member, 0, syncLevel, 540));
+        if (showSyncMessage)
+        {
+            member->pushPacket(new CMessageBasicPacket(member, member, 0, syncLevel, 540));
+        }
     }
     m_PSyncTarget = sync;
 }
