@@ -131,7 +131,16 @@ bool CAbilityState::CanUseAbility()
     {
         auto PAbility = GetAbility();
         auto PChar = static_cast<CCharEntity*>(m_PEntity);
-        if (PChar->PRecastContainer->HasRecast(RECAST_ABILITY, PAbility->getRecastId(), PAbility->getRecastTime()))
+
+        uint16 recastTime = PAbility->getRecastTime();
+        // Modify recast time for Light Arts and Dark Arts at GM level
+        if (PChar->m_GMlevel >= map_config.gmlevel_light_dark_arts_recast
+            && (PAbility->getID() == ABILITY_LIGHT_ARTS || PAbility->getID() == ABILITY_DARK_ARTS))
+        {
+            recastTime = map_config.light_dark_arts_recast;
+        }
+
+        if (PChar->PRecastContainer->HasRecast(RECAST_ABILITY, PAbility->getRecastId(), recastTime))
         {
             PChar->pushPacket(new CMessageBasicPacket(PChar, PChar, 0, 0, MSGBASIC_WAIT_LONGER));
             return false;
