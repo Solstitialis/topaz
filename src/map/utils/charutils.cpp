@@ -2066,8 +2066,6 @@ namespace charutils
     {
         // Check if equipped item and style item are both one-handed or two-handed
         bool isEquippedAndStyleSameHanded = PItem != nullptr && AItem != nullptr
-            && ((CItemWeapon*)PItem)->isRanged() == false
-            && ((CItemWeapon*)AItem)->isRanged() == false
             && ((CItemWeapon*)PItem)->isTwoHanded() == ((CItemWeapon*)AItem)->isTwoHanded();
 
         return (PItem != nullptr && AItem != nullptr
@@ -2139,11 +2137,7 @@ namespace charutils
             case SLOT_RANGED:
             case SLOT_AMMO:
                 // Appears as though these aren't implemented by SE.
-                if (hasValidStyle(PChar, PItem, appearance))
-                    PChar->mainlook.ranged = appearanceModel;
-                else
-                    PChar->mainlook.ranged = PChar->look.ranged;
-                break;
+                PChar->mainlook.ranged = PChar->look.ranged;
         }
     }
 
