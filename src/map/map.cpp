@@ -1107,6 +1107,7 @@ int32 map_config_default()
     map_config.gmlevel_spell_interrupt_down = 5;
     map_config.gmlevel_increase_weapon_hits = 5;
     map_config.gmlevel_enmity_cap = 5;
+    map_config.gmlevel_light_dark_arts_recast = 5;
     map_config.weapon_skill_cap_rank = 1;
     map_config.defense_skill_cap_rank = 1;
     map_config.magic_skill_cap_rank = 1;
@@ -1115,6 +1116,7 @@ int32 map_config_default()
     map_config.increase_weapon_hits = 0;
     map_config.enmity_cap_lower = -50;
     map_config.enmity_cap_upper = 100;
+    map_config.light_dark_arts_recast = 60;
     return 0;
 }
 
@@ -1656,6 +1658,10 @@ int32 map_config_read(const int8* cfgName)
             {
                 map_config.gmlevel_enmity_cap = atoi(w2);
             }
+            else if (strcmp(w1, "gmlevel_light_dark_arts_recast") == 0)
+            {
+                map_config.gmlevel_light_dark_arts_recast = atoi(w2);
+            }
             else if (strcmp(w1, "weapon_skill_cap_rank") == 0)
             {
                 map_config.weapon_skill_cap_rank = atoi(w2);
@@ -1687,6 +1693,10 @@ int32 map_config_read(const int8* cfgName)
             else if (strcmp(w1, "enmity_cap_upper") == 0)
             {
                 map_config.enmity_cap_upper = atoi(w2);
+            }
+            else if (strcmp(w1, "light_dark_arts_recast") == 0)
+            {
+                map_config.light_dark_arts_recast = atoi(w2);
             }
             else
             {

@@ -935,7 +935,16 @@ void CCharEntity::OnWeaponSkillFinished(CWeaponSkillState& state, action_t& acti
 void CCharEntity::OnAbility(CAbilityState& state, action_t& action)
 {
     auto PAbility = state.GetAbility();
-    if (this->PRecastContainer->HasRecast(RECAST_ABILITY, PAbility->getRecastId(), PAbility->getRecastTime()))
+
+    uint16 recastTime = PAbility->getRecastTime();
+    // Modify recast time for Light Arts and Dark Arts at GM level
+    if (this->m_GMlevel >= map_config.gmlevel_light_dark_arts_recast
+        && (PAbility->getID() == ABILITY_LIGHT_ARTS || PAbility->getID() == ABILITY_DARK_ARTS))
+    {
+        recastTime = map_config.light_dark_arts_recast;
+    }
+
+    if (this->PRecastContainer->HasRecast(RECAST_ABILITY, PAbility->getRecastId(), recastTime))
     {
         pushPacket(new CMessageBasicPacket(this, this, 0, 0, MSGBASIC_WAIT_LONGER));
         return;
@@ -980,11 +989,11 @@ void CCharEntity::OnAbility(CAbilityState& state, action_t& action)
         auto charge = ability::GetCharge(this, PAbility->getRecastId());
         if (charge && PAbility->getID() != ABILITY_SIC)
         {
-            action.recast = charge->chargeTime * PAbility->getRecastTime() - meritRecastReduction;
+            action.recast = charge->chargeTime * recastTime - meritRecastReduction;
         }
         else
         {
-            action.recast = PAbility->getRecastTime() - meritRecastReduction;
+            action.recast = recastTime - meritRecastReduction;
         }
 
         if (PAbility->getID() == ABILITY_LIGHT_ARTS || PAbility->getID() == ABILITY_DARK_ARTS || PAbility->getRecastId() == 231) //stratagems
@@ -1031,6 +1040,12 @@ void CCharEntity::OnAbility(CAbilityState& state, action_t& action)
                 //The Bison/Brave's Warbonnet & Khimaira/Stout Bonnet reduces recast time by 10 seconds.
                 action.recast -= 10;   // remove 10 seconds
             }
+        }
+
+        // Ensure action.recast >= 0
+        if (action.recast < 0)
+        {
+            action.recast = 0;
         }
 
         action.id = this->id;

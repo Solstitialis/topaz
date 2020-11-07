@@ -113,7 +113,7 @@ struct action_t
     uint32 id;
     ACTIONTYPE actiontype;
     uint16 actionid;
-    uint16 recast;
+    int16 recast;
     SPELLGROUP spellgroup;
     std::vector<actionList_t> actionLists;
 
