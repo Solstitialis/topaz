@@ -360,7 +360,7 @@ namespace battleutils
                 case SKILL_WIND_INSTRUMENT:
                 case SKILL_BLUE_MAGIC:
                 case SKILL_GEOMANCY:
-                case SKILL_HND:
+                case SKILL_HANDBELL:
                     if (PChar->m_GMlevel >= map_config.gmlevel_magic_skill_cap_rank
                         && map_config.magic_skill_cap_rank >= 1)
                     {
