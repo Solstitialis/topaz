@@ -7025,7 +7025,7 @@ INSERT INTO `item_equipment` VALUES (17293,'yagudo_freezer',47,0,1057,25,0,0,4,8
 INSERT INTO `item_equipment` VALUES (17294,'comet_tail',55,0,1057,24,0,0,4,8);
 INSERT INTO `item_equipment` VALUES (17295,'rising_sun_+1',68,0,299040,26,0,0,4,8);
 INSERT INTO `item_equipment` VALUES (17296,'pebble',1,0,30639,23,0,0,8,4);
-INSERT INTO `item_equipment` VALUES (17297,'throwing_coin',18,0,2048,0,0,0,8,4);
+INSERT INTO `item_equipment` VALUES (17297,'throwing_coin',18,0,2048,23,0,0,8,4);
 INSERT INTO `item_equipment` VALUES (17298,'tathlum',35,0,30639,0,0,0,8,4);
 INSERT INTO `item_equipment` VALUES (17299,'astragalos',50,0,30639,23,0,0,8,4);
 INSERT INTO `item_equipment` VALUES (17300,'platinum_bullet',50,0,5152,0,0,0,8,0);
