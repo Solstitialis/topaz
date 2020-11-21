@@ -17,10 +17,6 @@ function onTrigger(player)
         -- Add bonus effects to the player..
         player:addStatusEffect(tpz.effect.REFRESH, 1, 0, 0)
         player:addStatusEffect(tpz.effect.REGEN, 2, 0, 0)
-
-        -- Heal the player from the new buffs..
-        player:addHP( 50000 )
-        player:setMP( 50000 )
     elseif (player:getCharVar("GodMode") == 3) then
         -- Toggle GodMode off..
         player:setCharVar("GodMode", 0)
