@@ -180,6 +180,7 @@ struct map_config_t
     int8   gmlevel_increase_weapon_hits;    // Minimum GM level where multihit weapons get extra hits
     int8   gmlevel_enmity_cap;              // Minimum GM level where modified lower and upper enmity bonus caps are applied
     int8   gmlevel_light_dark_arts_recast;  // Minimum GM level where Light Arts and Dark Arts recast time is modified
+    int8   gmlevel_automaton_ele_cap_bonus; // Minimum GM level where automaton elemental capacity bonus is applied
     uint8  weapon_skill_cap_rank;           // Change skill cap rank. Will not allow r0 to be changed.
     uint8  defense_skill_cap_rank;          // Change skill cap rank. Will not allow r0 to be changed.
     uint8  magic_skill_cap_rank;            // Change skill cap rank. Will not allow r0 to be changed.
@@ -189,6 +190,7 @@ struct map_config_t
     int16  enmity_cap_lower;                // Lower enmity bonus cap (Do not set lower cap to less than -99 to ensure min 1% enmity. Retail is -50.)
     int16  enmity_cap_upper;                // Upper enmity bonus cap (Retail is 100)
     uint16 light_dark_arts_recast;          // Modify recast time(s) for Light Arts and Dark Arts (Default is 60s)
+    uint8 automaton_ele_cap_bonus;          // Apply automaton elemental capacity bonus
 };
 
 /************************************************************************

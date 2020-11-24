@@ -90,6 +90,15 @@ void LoadAutomaton(CCharEntity* PChar)
                     PChar->PAutomaton->m_ElementEquip[i] = 0;
             }
 
+            // Apply automaton elemental capacity bonus at GM level
+            if (PChar->m_GMlevel >= map_config.gmlevel_automaton_ele_cap_bonus)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    PChar->PAutomaton->setElementMax(i, map_config.automaton_ele_cap_bonus);
+                }
+            }
+
             setHead(PChar,tempEquip.Head);
             setFrame(PChar, tempEquip.Frame);
             LoadAutomatonStats(PChar);

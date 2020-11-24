@@ -122,6 +122,13 @@ CCharJobExtraPacket::CCharJobExtraPacket(CCharEntity* PChar, bool mjob)
         ref<uint16>(0x9A) = PChar->PAutomaton->getMod(Mod::CHR);
 
         ref<uint8>(0x9C) = 0; //extra elemental capacity from gifts
+
+        // Apply automaton elemental capacity bonus at GM level
+        if (PChar->m_GMlevel >= map_config.gmlevel_automaton_ele_cap_bonus)
+        {
+            // Show bonus in automaton equipment menu
+            ref<uint8>(0x9C) += map_config.automaton_ele_cap_bonus;
+        }
     }
 
 }
